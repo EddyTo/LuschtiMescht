@@ -25,7 +25,7 @@ public class UserDAO implements AbstractUserDAO {
 	
 	public static UserDAO getInstance() {
 		if(instance == null) {
-			EntityManagerFactory factory = Persistence.createEntityManagerFactory("risk.app");
+			EntityManagerFactory factory = Persistence.createEntityManagerFactory("risk.app.user");
 			em = factory.createEntityManager();
 			instance = new UserDAO(em);
 		}
@@ -86,38 +86,69 @@ public class UserDAO implements AbstractUserDAO {
 
 	@Override
 	public void updateUserGameList(User user, Game newGame) {
-		// TODO Auto-generated method stub
+		UserDAO.getInstance();
+		user.getGameList().add(newGame);
+		em.getTransaction().begin();
+		em.persist(user);
+		em.getTransaction().commit();
 		
 	}
 
 	@Override
 	public void deleteUser(User user) {
-		// TODO Auto-generated method stub
+		UserDAO.getInstance();
+		em.getTransaction().begin();
+		em.refresh(user);
+		em.getTransaction().commit();
 		
 	}
 
 	@Override
 	public User getUser(String username) {
-		// TODO Auto-generated method stub
-		return null;
+		UserList users = getUsers();
+		User userResult = null;
+		for(User user: users.values()) {
+			if(user.getUsername() == username) {
+				userResult = user;
+			}
+		}
+		return userResult;
 	}
 
 	@Override
 	public User getUser(Long userId) {
-		// TODO Auto-generated method stub
-		return null;
+		UserList users = getUsers();
+		User userResult = null;
+		for(User user: users.values()) {
+			if(user.getId() == userId) {
+				userResult = user;
+			}
+		}
+		return userResult;
 	}
 
 	@Override
 	public boolean userConnection(String username, String password) {
-		// TODO Auto-generated method stub
-		return false;
+		UserList users = getUsers();
+		boolean connectionResult = false;
+		for(User user : users.values()) {
+			if(user.getUsername() == username && user.getPassword() == password) {
+				connectionResult = true;
+			}
+		}
+		return connectionResult;
 	}
 
 	@Override
 	public boolean userExist(String username) {
-		// TODO Auto-generated method stub
-		return false;
+		UserList users = getUsers();
+		boolean userExist = false;
+		for(User user : users.values()) {
+			if(user.getUsername() == username) {
+				userExist = true;
+			}
+		}
+		return userExist;
 	}
 
 }
