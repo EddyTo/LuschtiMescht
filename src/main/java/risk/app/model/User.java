@@ -1,8 +1,14 @@
 package risk.app.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class User {
+import javax.persistence.Entity;
+import javax.persistence.*;
+
+@Entity
+public class User implements Serializable{
+	private static final long serialVersionUID=1L;
 	
 	private Long id;
 	
@@ -15,6 +21,14 @@ public class User {
 	public User() {
 		super();
 	}
+	
+	@Id
+	@GeneratedValue()
+	public Long getId() {
+		return id;}
+
+	public void setId(Long id) {
+		this.id = id;}
 	
 	public String getUsername() {
 		return username;
@@ -44,13 +58,6 @@ public class User {
 		return gameList;
 	}
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public void setGameList(ArrayList<Game> gameList) {
 		this.gameList = gameList;
