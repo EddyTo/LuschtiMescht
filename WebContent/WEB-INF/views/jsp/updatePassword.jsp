@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page errorPage="error.jsp" %> 
+<%-- <%@ page errorPage="error.jsp" %>  --%>
 <!DOCTYPE html>
 <html>
 <head>
-<c:import url="../subviews/style.jsp" />
+
 <title>Password Edit</title>
 <script type="text/javascript" src=" ../scripts/divers.js"></script>
 </head>

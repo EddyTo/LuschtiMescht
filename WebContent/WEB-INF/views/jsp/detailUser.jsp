@@ -3,18 +3,18 @@
     pageEncoding="ISO-8859-1"
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page errorPage="error.jsp" %> 
+<%-- <%@ page errorPage="error.jsp" %>  --%>
 
 
 <!DOCTYPE html>
 <html>
 <head>
-<c:import url="../subviews/style.jsp" />
+
 <title>User Details</title>
 </head>
 
 <body>
-	<c:import url="../subviews/menu.jsp" />
+<%-- 	<c:import url="../subviews/menu.jsp" /> --%>
 	<div class="container">
 		<ul class="list-group">
 			<li class="list-group-item">Pseudo : ${user.getUsername()}</li>

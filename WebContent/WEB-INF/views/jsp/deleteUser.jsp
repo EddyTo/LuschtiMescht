@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page errorPage="error.jsp" %> 
+<%-- <%@ page errorPage="error.jsp" %>  --%>
 <!DOCTYPE html>
 <html>
 	<head>
-		<c:import url="/style/style.jsp"/>
+		
 		<title>User Delete</title>
 		<style type="text/css">
 			.warning {
@@ -15,7 +15,7 @@
 	</head>
 	
 	<body>
-<c:import url="/WEB-INF/views/Menu.jsp" />
+<%-- <c:import url="/WEB-INF/views/subviews/menu.jsp" /> --%>
 <h1 class="container warning">Etes-vous sûr de vouloir supprimer votre compte?</h1>
 <div class="container jumbotron">
 		
