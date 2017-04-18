@@ -7,7 +7,7 @@ public class Cartes {
 
 	private Map<String, String> joueurs = new HashMap<String, String>();
 
-	public CartesTerritoires() {
+	public void CartesTerritoires() {
 
 		this.joueurs.put("Afrique du Nord", "fantassin");
 		this.joueurs.put("Afrique du Sud", "canon");
