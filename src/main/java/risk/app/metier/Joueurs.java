@@ -3,11 +3,11 @@ package risk.app.metier;
 import java.util.HashMap;
 import java.util.Map;
 
-public class nbJoueurs {
+public class Joueurs {
 
 	private Map<Integer, String> joueurs = new HashMap<Integer, String>();
 
-	public nbJoueurs() {
+	public Joueurs() {
 	}
 
 	public void listeJoueurs(int nombre) {
