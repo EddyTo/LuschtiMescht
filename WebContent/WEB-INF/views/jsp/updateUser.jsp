@@ -15,7 +15,7 @@
 
 <div class="container jumbotron form-group">
 
-<p><label for="firstname">Pseudo:</label><input type="text" class="form-control" name="pseudo"  value="${user.getPseudo()}"></p>
+
 <p><label for="email">Email:</label> <input type="email" class="form-control"  name="email"  value="${user.getEmail()}"></p>
 <p><input type="submit" class="btn btn-success" value="Enregistrer modifications"/></p>
 

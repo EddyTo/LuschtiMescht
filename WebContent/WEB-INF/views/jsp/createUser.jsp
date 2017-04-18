@@ -19,7 +19,7 @@
 <div class="jumbotron container">
 <form action="CreateUser" onsubmit="checkFormulaire()" method="post">
 <div class="form-group">
-<p class="texte"><label for="pseudo">Pseudo:</label> <input id="pseudo" type="text" class="form-control" name="pseudo" placeholder="pseudo"></p>
+<p class="texte"><label for="pseudo">Pseudo:</label> <input id="username" type="text" class="form-control" name="username" placeholder="pseudo"></p>
 <p class="texte"><label for="email">Email:</label> <input id="email" type="email" class="form-control"  name="email" placeholder="email"></p>
 <p class="texte"><label for="password">Mot de passe:</label> <input id="pass1" type="password" class="form-control"  name="password" placeholder="mot de passe"></p>
 <p class="texte"><label for="password2">Saisir à nouveau le mot de passe:</label> <input id="pass2" type="password" class="form-control"  name="password2" placeholder="mot de passe"></p>

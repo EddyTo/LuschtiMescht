@@ -17,7 +17,7 @@
 	<c:import url="../subviews/menu.jsp" />
 	<div class="container">
 		<ul class="list-group">
-			<li class="list-group-item">Pseudo : ${user.getPseudo()}</li>
+			<li class="list-group-item">Pseudo : ${user.getUsername()}</li>
 			<li class="list-group-item">Email : ${user.getEmail()}</li>
 		</ul>
 	</div>

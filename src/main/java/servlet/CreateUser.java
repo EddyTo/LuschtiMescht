@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.UserDAO;
+import risk.app.model.User;
+
 @WebServlet("/CreateUser")
 public class CreateUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -30,16 +33,16 @@ public class CreateUser extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 
-		String pseudo = request.getParameter("pseudo");
+		String username = request.getParameter("username");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
 		User user = new User();
-		user.setPseudo(pseudo);
+		user.setUsername(username);
 		user.setEmail(email);
 		user.setPassword(password);
 
-		Service.saveUser(user);
+		UserDAO.createUser(username, email, password);
 		
 		response.sendRedirect("Login");
 	}
