@@ -9,7 +9,7 @@ public interface AbstractUserDAO {
 	public abstract void updateUserMail(User user);
 	public abstract void updateUserPassword(User user);
 	public abstract void updateUserScore(User user);
-	public abstract void updateUserGameList(User user, Game newGame);
+	public abstract void updateUserGameList(User user, Long newGameId);
 	public abstract void deleteUser(User user);
 	public abstract User getUser(String username);
 	public abstract User getUser(Long userId);

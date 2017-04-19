@@ -1,7 +1,7 @@
 package risk.app.model;
 
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.ArrayList;
 import javax.persistence.*;
 
 @Entity
@@ -14,7 +14,7 @@ public class User implements Serializable{
 	private String email;
 	private String password;
 	private int score;
-	private Long[] gameListId;
+	private ArrayList<Long> gameIdList;
 	
 	public User() {
 		super();
@@ -57,13 +57,13 @@ public class User implements Serializable{
 		this.score = score;
 	}
 	
-	public  Long[] getGameListId() {
-		return gameListId;
+	public  ArrayList<Long> getGameIdList() {
+		return gameIdList;
 	}
 
 
-	public void setGameList(Long[] gameListId) {
-		this.gameListId = gameListId;
+	public void setGameIdList(ArrayList<Long> gameIdList) {
+		this.gameIdList = gameIdList;
 	}
 	
 }

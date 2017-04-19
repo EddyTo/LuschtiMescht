@@ -1,6 +1,5 @@
 package dao;
 
-import risk.app.model.Game;
 import risk.app.model.User;
 import risk.app.model.UserList;
 
@@ -62,7 +61,7 @@ public class UserDAO implements AbstractUserDAO {
 	public void updateUserMail(User user) {
 		UserDAO.getInstance();
 		em.getTransaction().begin();
-		em.persist(user);
+		em.merge(user);
 		em.getTransaction().commit();
 	}
 
@@ -70,7 +69,7 @@ public class UserDAO implements AbstractUserDAO {
 	public void updateUserPassword(User user) {
 		UserDAO.getInstance();
 		em.getTransaction().begin();
-		em.persist(user);
+		em.merge(user);
 		em.getTransaction().commit();
 		
 	}
@@ -79,17 +78,17 @@ public class UserDAO implements AbstractUserDAO {
 	public void updateUserScore(User user) {
 		UserDAO.getInstance();
 		em.getTransaction().begin();
-		em.persist(user);
+		em.merge(user);
 		em.getTransaction().commit();
 		
 	}
 
 	@Override
-	public void updateUserGameList(User user, Game newGame) {
+	public void updateUserGameList(User user, Long newGameId) {
 		UserDAO.getInstance();
-		user.getGameList().add(newGame);
+		user.getGameIdList().add(newGameId);
 		em.getTransaction().begin();
-		em.persist(user);
+		em.merge(user);
 		em.getTransaction().commit();
 		
 	}
@@ -98,7 +97,7 @@ public class UserDAO implements AbstractUserDAO {
 	public void deleteUser(User user) {
 		UserDAO.getInstance();
 		em.getTransaction().begin();
-		em.refresh(user);
+		em.remove(user);
 		em.getTransaction().commit();
 		
 	}

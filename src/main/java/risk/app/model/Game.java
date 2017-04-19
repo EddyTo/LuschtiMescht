@@ -2,7 +2,7 @@ package risk.app.model;
 
 import java.io.Serializable;
 import java.sql.Date;
-import java.util.Collection;
+import java.util.ArrayList;
 import javax.persistence.*;
 
 
@@ -12,7 +12,7 @@ public class Game implements Serializable{
 
 	private Long id;
 	private Long gameWinnerId;
-	private Long[] playersListId;
+	private ArrayList<Long> playersIdList;
 	private Date date;
 
 	public Game() {
@@ -27,12 +27,12 @@ public class Game implements Serializable{
 	public void setId(Long id) {
 		this.id = id;}
 	
-	public Long[] getPlayersListId() {
-		return playersListId;
+	public ArrayList<Long> getPlayersIdList() {
+		return playersIdList;
 	}
 
-	public void setPlayersList(Long[] playersListId) {
-		this.playersListId = playersListId;
+	public void setPlayersIdList(ArrayList<Long> playersIdList) {
+		this.playersIdList = playersIdList;
 	}
 
 	public Long getGameWinnerId() {
