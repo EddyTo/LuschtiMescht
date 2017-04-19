@@ -12,7 +12,7 @@ public class Player {
 	private Hand hand;
 	private List<Hand> listeHand;
 	private Armees armee;
-	private Pions pion;
+	private String couleur;
 
 	/**
 	 * Constructeur par initialisation.
@@ -21,7 +21,7 @@ public class Player {
 		this.listeHand = new Vector<Hand>();
 		hand = new Hand();
 		armee = new Armees();
-		pion = new Pions(couleur);
+		this.couleur = couleur;
 	}
 
 	/**
@@ -106,6 +106,10 @@ public class Player {
 
 	public int countCavaliers() {
 		return this.hand.countArmes("cavalier");
+	}
+
+	public String getCouleur() {
+		return couleur;
 	}
 
 }
