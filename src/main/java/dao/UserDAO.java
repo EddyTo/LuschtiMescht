@@ -24,7 +24,7 @@ public class UserDAO implements AbstractUserDAO {
 	
 	public static UserDAO getInstance() {
 		if(instance == null) {
-			EntityManagerFactory factory = Persistence.createEntityManagerFactory("risk.app.user");
+			EntityManagerFactory factory = Persistence.createEntityManagerFactory("risk.app");
 			em = factory.createEntityManager();
 			instance = new UserDAO(em);
 		}

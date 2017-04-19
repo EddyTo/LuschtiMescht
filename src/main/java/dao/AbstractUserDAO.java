@@ -1,6 +1,5 @@
 package dao;
 
-import risk.app.model.Game;
 import risk.app.model.User;
 
 public interface AbstractUserDAO {
