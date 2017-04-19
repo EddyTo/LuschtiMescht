@@ -21,9 +21,10 @@
 		
 		<div class="container">
 			<h2 class="page-header text-center">Personal informations</h2>
-		
-			<form>
-				<div class="container jumbotron">
+			
+			<div class="container jumbotron">
+				<form>
+				
 					<div class="row">
 						<div class="col-md-4"></div>
 						<ul class="list-group col-md-4">
@@ -36,21 +37,22 @@
 							<li class="list-group-item">
 								<div class="row">
 									<span class="col-md-4 text-right">Email:</span>
-									<input type="email" class="col-md-7 text-center" id="email" value="${email}" required onchange="checkInput();"/>
+									<input type="email" class="col-md-7 text-center" id ="email" name="email" value="${email}" required onchange="checkInput();"/>
 								</div>
 							</li>
 						</ul>
 					</div>
-					
-					<div class="text-center">
-						<a href="UpdatePassword" class="btn btn-primary">Change password</a>
-						<c:import url="../subviews/modal_askPassword.jsp" />
-						<button type="submit" id="link-confirm-password" class="btn btn-success"  data-toggle="modal" data-target="#modal-confirm-password" disabled="disabled">Confirm</button>
-					</div>
-					
-				</div>
 				
-			</form>
+				</form>
+				<div class="text-center">
+					<a href="UpdatePassword" class="btn btn-primary">Change password</a>
+					<c:import url="../subviews/modal_askPassword.jsp" />
+					<button type="submit" id="link-confirm-password" class="btn btn-success"  data-toggle="modal" data-target="#modal-confirm-password" disabled="disabled">Confirm</button>
+				</div>
+			</div>	
+				
+				
+			
 		
 		</div>
 		

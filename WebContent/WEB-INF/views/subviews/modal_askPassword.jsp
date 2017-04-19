@@ -5,9 +5,8 @@
     <div class="modal-content">
       <div class="modal-header">
         <h3 class="modal-title" id="exampleModalLabel">C0nf1rm t0 c0nt1nu3</h3>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        
+      
       </div>
       <div class="modal-body">
       	<form action="UpdateUser" method="post">
@@ -15,7 +14,7 @@
 			<br />
       		<div class="form-group row text-right">
       			<label class="col-md-3">P4$$w0rd: </label>
-      			<input class="col-md-8" type="password" name="password" required />
+      			<input class="col-md-8" type="password" name="pwd" required />
       		</div>
       		<div class="text-right">
         		<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>	

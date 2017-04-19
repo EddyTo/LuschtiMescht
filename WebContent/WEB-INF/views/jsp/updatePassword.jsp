@@ -19,7 +19,7 @@
 		<div class="container text-center">
 			<h2 class="page-header">Personal informations</h2>
 			
-			<form action="UpdatePassword" onsubmit = "checkPassword();" method="post">
+			<form action="UpdatePassword" onsubmit = "return checkPassword();" method="post">
 				<div class="jumbotron">
 					<div class="container">
 					

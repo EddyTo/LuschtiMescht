@@ -27,12 +27,11 @@ public class DetailUser extends HttpServlet {
 		String username = (String) request.getSession().getAttribute("login");
 		
 		if(username == null){
-			getServletContext().setAttribute("error", "User doesn't exist");
-			response.sendRedirect("index.jsp");
+			response.sendRedirect("index.html");
 		}else{
 			
 			UserDAO dao = null;
-			request.getSession().setAttribute("email","test");// dao.getUser(username).getEmail());
+			request.getSession().setAttribute("email", dao.getUser(username).getEmail());
 			RequestDispatcher dispatch = request.getRequestDispatcher("WEB-INF/views/jsp/detailUser.jsp");
 			dispatch.forward(request, response);
 		}

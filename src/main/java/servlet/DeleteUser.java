@@ -32,11 +32,11 @@ public class DeleteUser extends HttpServlet {
 		String username = (String) request.getSession().getAttribute("login");
 		String pwd = request.getParameter("password");
 		
-		//UserDAO dao = null;
-		//boolean ok = dao.userConnection(username, pwd);
+		UserDAO dao = null;
+		boolean ok = dao.userConnection(username, pwd);
 		
-		if(true){
-			//dao.deleteUser(dao.getUser(username));
+		if(ok){
+			dao.deleteUser(dao.getUser(username));
 			request.getSession().setAttribute("displayModalDeleted", true);
 			request.getSession().setAttribute("login", null);
 			request.getSession().setAttribute("message", null);

@@ -9,7 +9,6 @@ function displayModalDeleted(){
 }
 
 function displayModalConfirmPwd(){
-	console.log("test");
 	document.getElementById('link-confirm-password').click();
 }
 
