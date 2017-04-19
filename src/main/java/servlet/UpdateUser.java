@@ -14,43 +14,52 @@ import risk.app.model.User;
 
 @WebServlet("/UpdateUser")
 public class UpdateUser extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
 
 	public UpdateUser() {
 		super();
-
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 
-		String userId = (String) request.getSession().getAttribute("login");
+		String username = (String) request.getSession().getAttribute("login");
 
-		if (userId == null) {
-			getServletContext().setAttribute("error", "User doesn't exist");
-			response.sendRedirect("index.jsp");
+		if (username == null) {
+			response.sendRedirect("index.html");
 		} else {
+			//UserDAO dao = null;
+			request.getSession().setAttribute("email", "test");//dao.getUser(username).getEmail());
 			RequestDispatcher dispatch = request.getRequestDispatcher("WEB-INF/views/jsp/updateUser.jsp");
 			dispatch.forward(request, response);
 		}
+		
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
-		User user = (User) request.getSession().getAttribute("login");
-		long userId = user.getId();
-
-		String email = request.getParameter("email");
-
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+		String username = (String) request.getSession().getAttribute("login");
 		
-		if (email != "") {
-			user.setEmail(email);
+		//UserDAO dao = null;
+		boolean ok = true; // = dao.userConnection(username, pwd);
+		
+		if(ok){
+			resetSessionVar(request, response);
+			UserDAO dao = null;
+			User newuser = dao.getUser(username);
+			newuser.setEmail(request.getParameter("email"));
+			dao.updateUserMail(newuser);
+			RequestDispatcher dispatch = request.getRequestDispatcher("/WEB-INF/views/jsp/detailUser.jsp");
+			dispatch.forward(request, response);
+		}else{
+			request.getSession().setAttribute("displayModalConfirmPwd", true);
+			request.getSession().setAttribute("message", "Your password does not match :/");
+			response.sendRedirect("UpdateUser");
 		}
-
-		UserDAO.updateUserMail(userId, email);
-		RequestDispatcher dispatch = request.getRequestDispatcher("/WEB-INF/views/jsp/detailUser.jsp");
-		dispatch.forward(request, response);
+	}
+	
+	public static void resetSessionVar(HttpServletRequest request, HttpServletResponse response){
+		request.getSession().setAttribute("displayModalConfirmPwd", false);
+		request.getSession().setAttribute("message", "");
 	}
 
 }

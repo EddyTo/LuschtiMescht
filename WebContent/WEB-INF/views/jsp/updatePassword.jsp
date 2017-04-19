@@ -1,29 +1,63 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page 	language="java" 
+			contentType="text/html; charset=ISO-8859-1"
+    		pageEncoding="ISO-8859-1"%>
+    		
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%-- <%@ page errorPage="error.jsp" %>  --%>
+
 <!DOCTYPE html>
 <html>
-<head>
 
-<title>Password Edit</title>
-<script type="text/javascript" src=" ../scripts/divers.js"></script>
-</head>
-<body>
-<c:import url="../subviews/menu.jsp" />
-<h2 class="container">Informations personnelles</h2>
-<form action="UpdatePassword" onsubmit = "checkPassword()" method="post">
-
-<div class="container jumbotron form-group">
-
-
-<p><label for="PreviousPassword">Précédent mot de passe:</label> <input type="password" class="form-control" name="previousPassword"  value=""></p>
-<p><label for="NewPassword">Nouveau mot de passe:</label> <input id = "pass1" type="password"  class="form-control" name="newPassword" value=""></p>
-<p><label for="ConfirmPassword">Confirmer le nouveau mot de passe:</label> <input id="pass2" type="password" class="form-control"  name="confirmPassword" value=""></p>
-<p><input type="submit" class="btn btn-success" value="Enregistrer modifications"/></p>
-
-</div>
-</form>
-
-</body>
+	<head>
+		<title>Password Edit</title>
+		<script type="text/javascript" src="scripts/divers.js"></script>
+		<c:import url="../subviews/importBootstrap.jsp" />
+	</head>
+	
+	<body>
+		<c:import url="../subviews/menu.jsp" />
+		
+		<div class="container text-center">
+			<h2 class="page-header">Personal informations</h2>
+			
+			<form action="UpdatePassword" onsubmit = "checkPassword();" method="post">
+				<div class="jumbotron">
+					<div class="container">
+					
+						<c:if test="${message != ''}">
+							<p class="alert alert-danger">${message}</p>
+						</c:if>
+					
+						<div class="col-md-4"></div>
+						<div class="col-md-4">
+							<label class="text-center">Previous password:</label>
+							<input type="password" id="previous-pwd" class="form-control" name="previousPassword"  value="">
+						</div>
+					</div>
+					<br />
+					<div class="container">
+						<div class="col-md-4"></div>
+						<div class="col-md-4">
+							<label class="text-center">New password:</label>
+							<input type="password" id="pass1" class="form-control" name="previousPassword"  value="">
+						</div>
+					</div>
+					<br />
+					<div class="container">
+						<div class="col-md-4"></div>
+						<div class="col-md-4">
+							<label class="text-center">Confirm new password:</label>
+							<input type="password" id="pass2" class="form-control" name="previousPassword"  value="">
+						</div>
+					</div>
+					<br />
+					
+					<div class="text-center">
+						<input type="submit" class="btn btn-success" value="Enregistrer modifications"/>
+					</div>
+				</div>
+			</form>
+		</div>
+		
+		<c:import url="../subviews/footer.jsp" />
+	</body>
 </html>

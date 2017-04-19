@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.UserDAO;
+
 
 @WebServlet("/Login")
 public class LogIn extends HttpServlet {
@@ -21,16 +23,22 @@ public class LogIn extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		DeleteUser.resetSessionVar(request, response);
+		LogIn.resetSessionVar(request, response);
+		
 		response.sendRedirect("index.html");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		DeleteUser.resetSessionVar(request, response);
+		LogIn.resetSessionVar(request, response);
+		
 		
 		String username = request.getParameter("username");
 		String pwd = request.getParameter("password");
 		
-		InterfaceDAO dao = null;
-		boolean ok = dao.userExists(username, pwd);
+		//UserDAO dao = null;
+		boolean ok = true; // = dao.userConnection(username, pwd);
 		
 		if(ok){
 			request.getSession().setAttribute("displayModalLogIn", false);
@@ -43,5 +51,11 @@ public class LogIn extends HttpServlet {
 			response.sendRedirect("index.html");
 		}
 	}
-
+	
+	public static void resetSessionVar(HttpServletRequest request, HttpServletResponse response){
+		request.getSession().setAttribute("displayModalLogIn", null);
+		request.getSession().setAttribute("message", "");
+		request.getSession().setAttribute("login", null);
+	}
+	
 }

@@ -12,53 +12,52 @@ import javax.servlet.http.HttpServletResponse;
 import dao.UserDAO;
 import risk.app.model.User;
 
-
 @WebServlet("/UpdatePassword")
 public class UpdatePassword extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
-       
 
     public UpdatePassword() {
         super();
-      
     }
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String username = (String) request.getSession().getAttribute("login");
 		
-String userId = (String) request.getSession().getAttribute("login");
-		
-		if(userId == null){
-			getServletContext().setAttribute("error", "User doesn't exist");
-			response.sendRedirect("index.jsp");
+		if(username == null){
+			response.sendRedirect("index.html");
 		}else{
-		RequestDispatcher dispatch = request.getRequestDispatcher("WEB-INF/views/jsp/updatePassword.jsp");
-		dispatch.forward(request, response);
+			RequestDispatcher dispatch = request.getRequestDispatcher("WEB-INF/views/jsp/updatePassword.jsp");
+			dispatch.forward(request, response);
 		}
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String username = (String) request.getSession().getAttribute("login");
+		UserDAO dao = null;
+		User user = dao.getUser(username);
 		
-		User user = (User) request.getSession().getAttribute("login");
-		long userId = user.getId();
-		
-		String previousPassword = request.getParameter("previousPassword").trim();
+		String previousPassword = request.getParameter("previousPassword");
 		String newPassword = request.getParameter("newPassword");
 		
 		boolean isPasswordGood = previousPassword.equals(user.getPassword());
 
 		if (isPasswordGood) {
 			user.setPassword(newPassword);
-			UserDAO.updateUserPassword(userId, newPassword);
-		
+			
+			dao.updateUserPassword(user);
+			
+
+			request.getSession().setAttribute("message", "");
+			
 			RequestDispatcher dispatch = request.getRequestDispatcher("/WEB-INF/views/jsp/detailUser.jsp");
 			dispatch.forward(request, response);
-			
 		}
 		else {
-
-			response.sendRedirect("UpdatePassword?login=" + user.getId());
+			request.getSession().setAttribute("message", "Wrong password !!");
+			response.sendRedirect("UpdatePassword");
 		}
 		
 		

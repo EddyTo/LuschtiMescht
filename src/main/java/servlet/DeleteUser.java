@@ -10,48 +10,52 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.cfranc.UserManger.model.ListeUtilisateur;
-import com.cfranc.UserManger.model.Utilisateur;
-
 import dao.UserDAO;
 import risk.app.model.User;
 
-
 @WebServlet("/DeleteUser")
 public class DeleteUser extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
        
-  
     public DeleteUser() {
         super();
-        
     }
 
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userId = request.getParameter("user");
-		if(userId == null)
-		{
-			getServletContext().setAttribute("error", "User doesn't exist");
-			response.sendRedirect("index.jsp");
-		}
-		else
-		{
-			RequestDispatcher dispatch = request.getRequestDispatcher("WEB-INF/views/jsp/updatePassword.jsp");
-			dispatch.forward(request, response);
-		}
+		response.sendRedirect("index.html");
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		User user = (User) request.getSession().getAttribute("login");
-		long userId = user.getId();
+		String username = (String) request.getSession().getAttribute("login");
+		String pwd = request.getParameter("password");
 		
-		UserDAO.deleteUser(userId);
-		System.out.println("User " + user.getId() + " has been deleted");
-		response.sendRedirect("Login");
+		//UserDAO dao = null;
+		//boolean ok = dao.userConnection(username, pwd);
 		
+		if(true){
+			//dao.deleteUser(dao.getUser(username));
+			request.getSession().setAttribute("displayModalDeleted", true);
+			request.getSession().setAttribute("login", null);
+			request.getSession().setAttribute("message", null);
+			request.getSession().setAttribute("displayModalDelete", null);
+			response.sendRedirect("index.html");
+			
+		}else{
+			request.getSession().setAttribute("displayModalDeleted", false);
+			request.getSession().setAttribute("displayModalDelete", true);
+			request.getSession().setAttribute("message", "Mistake in password :/");
+			response.sendRedirect("DetailUser");
+		}
+		
+	}
+	
+	public static void resetSessionVar(HttpServletRequest request, HttpServletResponse response){
+		request.getSession().setAttribute("displayModalDeleted", false);
+		request.getSession().setAttribute("displayModalDelete", false);
+		request.getSession().setAttribute("message", "");
 	}
 
 }

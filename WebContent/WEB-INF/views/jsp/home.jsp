@@ -21,10 +21,17 @@
 		<!-- BODY -->
 		<div class="container">
 			<h1 class="page-header text-center">Das esch a LuschtiMescht !</h1>
-				<img class="center-block" src="images/risk.jpg" alt="" style="width:600;height:375;">
+			<img class="center-block" src="images/risk.jpg" alt="" style="width:600;height:375;">
 		</div>
 		
 		<c:import url="../subviews/footer.jsp" />
+		
+		
+		<c:if test="${displayModalDeleted == true}">
+			<c:import url="../subviews/modal_deleted.jsp" />
+			<div class="hidden"><a href="" id="link-user-deleted" data-toggle="modal" data-target="#modal-user-deleted"></a></div>
+			<script type="text/javascript">displayModalDeleted();</script>
+		</c:if>
 		
 	</body>
 </html>

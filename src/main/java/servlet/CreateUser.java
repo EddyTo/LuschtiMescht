@@ -15,24 +15,22 @@ import risk.app.model.User;
 
 @WebServlet("/CreateUser")
 public class CreateUser extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
 
 	public CreateUser() {
 		super();
-
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+		DeleteUser.resetSessionVar(request, response);
+		LogIn.resetSessionVar(request, response);
+		
 		RequestDispatcher dispatch = request.getRequestDispatcher("WEB-INF/views/jsp/createUser.jsp");
 		dispatch.forward(request, response);
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		HttpSession session = request.getSession();
-
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
 		String username = request.getParameter("username");
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
@@ -41,10 +39,14 @@ public class CreateUser extends HttpServlet {
 		user.setUsername(username);
 		user.setEmail(email);
 		user.setPassword(password);
-
-		UserDAO.createUser(username, email, password);
 		
-		response.sendRedirect("Login");
+		UserDAO dao = null;
+		dao.createUser(user);
+		
+		request.getSession().setAttribute("displayModalLogIn", false);
+		request.getSession().setAttribute("message", null);
+		request.getSession().setAttribute("login", username);
+		response.sendRedirect("index.html");
 	}
 
 }

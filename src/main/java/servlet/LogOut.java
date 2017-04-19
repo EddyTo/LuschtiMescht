@@ -19,10 +19,8 @@ public class LogOut extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		request.getSession().setAttribute("login", null);
-		request.getSession().setAttribute("message", null);
-		request.getSession().setAttribute("displayModalLogIn", false);
+		DeleteUser.resetSessionVar(request, response);
+		LogIn.resetSessionVar(request, response);
 		
 		response.sendRedirect("index.html");
 	}
