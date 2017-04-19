@@ -107,6 +107,10 @@ public class Player {
 	public int countCavaliers() {
 		return this.hand.countArmes("cavalier");
 	}
+	
+	public int countArmee() {
+		return this.armee.getNbArmees();
+	}
 
 	public String getCouleur() {
 		return couleur;
