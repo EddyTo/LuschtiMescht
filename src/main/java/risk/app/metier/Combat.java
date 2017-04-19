@@ -23,19 +23,22 @@ public class Combat {
 		System.out.println(Msg6);	
 		
 	}
-	private	static int nbDesDeffenseur1 = 1;
-	private	static int nbDesDeffenseur2 = 4;
-
-	private	static int nbDesAttaquant1 = 6;
-	private	static int nbDesAttaquant2 = 2;
-	private	static int nbDesAttaquant3 = 3;
 	
-	private	static Boolean desDef1 = true;
-	private	static Boolean desDef2 = true;
+	private	static int nbDesDeffenseur1 = Dés.nbAleatoire();
+	private	static int nbDesDeffenseur2 = Dés.nbAleatoire();;
 
-	private	static Boolean desAtt1 = true;
-	private	static Boolean desAtt2 = true;
-	private	static Boolean desAtt3 = true;
+	private	static int nbDesAttaquant1 = Dés.nbAleatoire();;
+	private	static int nbDesAttaquant2 = Dés.nbAleatoire();;
+	private	static int nbDesAttaquant3 = Dés.nbAleatoire();;
+	
+	private Boolean combatPossible = null;
+	
+	private	static Boolean desDef1 = null;
+	private	static Boolean desDef2 = null;
+
+	private	static Boolean desAtt1 = null;
+	private	static Boolean desAtt2 = null;
+	private	static Boolean desAtt3 = null;
 
 	private	static Boolean winDef = null;
 	private	static Boolean winAtt = null;
