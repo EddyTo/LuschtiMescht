@@ -4,7 +4,7 @@ public class Dés {
 
 	public static void main(String[] args) {
 
-		int nbAleatoire = Dés.nbAleatoire();
+	int nbAleatoire = Dés.nbAleatoire();
 		System.out.println(nbAleatoire);
 
 	}
