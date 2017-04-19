@@ -16,6 +16,7 @@ public class UserDAO implements AbstractUserDAO {
 	@PersistenceContext
 	private static EntityManager em;
 	private static UserDAO instance=null;
+	private static final String PERSISTENCE_UNIT_NAME="risk.app";
 	
 	private UserDAO(EntityManager em) {
 		super();
@@ -24,13 +25,13 @@ public class UserDAO implements AbstractUserDAO {
 	
 	public static UserDAO getInstance() {
 		if(instance == null) {
-			EntityManagerFactory factory = Persistence.createEntityManagerFactory("risk.app.user");
+			EntityManagerFactory factory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
 			em = factory.createEntityManager();
 			instance = new UserDAO(em);
 		}
 		return instance;
 	}
-	
+
 	public static UserList getUsers() {
 		UserDAO.getInstance();
 		
@@ -38,7 +39,7 @@ public class UserDAO implements AbstractUserDAO {
 		return users;
 	}
 
-	private static UserList findAllUsers() {
+	public static UserList findAllUsers() {
 		UserList users = new UserList();
 		Query q = em.createQuery("SELECT t from User t");
 		List<User> userList = q.getResultList();

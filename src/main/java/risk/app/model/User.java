@@ -56,7 +56,7 @@ public class User implements Serializable{
 	public void setScore(int score) {
 		this.score = score;
 	}
-	
+
 	public  ArrayList<Long> getGameIdList() {
 		return gameIdList;
 	}
