@@ -37,6 +37,14 @@ public class GameDAO implements AbstractGameDAO {
 		em.getTransaction().commit();
 		
 	}
+	
+	@Override
+	public void updateGame(Game game) {
+		GameDAO.getInstance();
+		em.getTransaction().begin();
+		em.merge(game);
+		em.getTransaction().commit();
+	}
 
 	@Override
 	public void updateScore(Game game) {
