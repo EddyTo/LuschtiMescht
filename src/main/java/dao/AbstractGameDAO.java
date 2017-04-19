@@ -1,11 +1,9 @@
 package dao;
 
-import java.util.ArrayList;
-
-import risk.app.model.User;
+import risk.app.model.Game;
 
 public interface AbstractGameDAO {
 
-	public abstract void createGame(ArrayList<User> playersList, User gameWinner);
-	
+	public abstract void createGame(Game game);
+	public abstract void updateScore(Game game);
 }
