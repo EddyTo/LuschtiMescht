@@ -22,7 +22,7 @@ public class GameDAO implements AbstractGameDAO {
 	
 	public static GameDAO getInstance() {
 		if(instance == null) {
-			EntityManagerFactory factory = Persistence.createEntityManagerFactory("risk.app.game");
+			EntityManagerFactory factory = Persistence.createEntityManagerFactory("risk.app");
 			em = factory.createEntityManager();
 			instance = new GameDAO(em);
 		}
