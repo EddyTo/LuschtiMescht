@@ -122,6 +122,10 @@ public class Hand {
 		System.out.println("");
 	}
 
+	public void afficherI(int i) {
+		this.ListeCard[i].afficher();
+	}
+
 	/**
 	 * renvoie les territoires de la main courante
 	 */
@@ -151,6 +155,34 @@ public class Hand {
 	public void clearHand() {
 		this.NCard = 0;
 		this.ListeCard = new Carte[44];
+	}
+
+	public Carte[] getListeCard() {
+		return ListeCard;
+	}
+
+	public int countTerritoires() {
+		int count = 0;
+
+		for (int i = 0; i < this.NCard; i++) {
+			String territoire = this.ListeCard[i].getTerritoire();
+			if (territoire != "Joker1" && territoire != "Joker2") {
+				count++;
+			}
+		}
+		return count;
+	}
+
+	public int countArmes(String countArme) {
+		int count = 0;
+
+		for (int i = 0; i < this.NCard; i++) {
+			String arme = this.ListeCard[i].getArme();
+			if (arme == countArme) {
+				count++;
+			}
+		}
+		return count;
 	}
 
 }
