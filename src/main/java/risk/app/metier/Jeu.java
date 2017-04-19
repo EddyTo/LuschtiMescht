@@ -226,6 +226,17 @@ public class Jeu {
 			}
 		}
 	}
+	
+	public Position identifierCase(String territoireID) {
+		for (int i = 0; i < plateau.getCasePlateau().size(); i++) {
+			String plateauID = plateau.getCasePlateau().get(i).getId();
+			Position territoire = plateau.getCasePlateau().get(i);
+			if (plateauID.equals(territoireID)) {
+				return territoire;
+			}
+		}
+		return null;
+	}
 
 	public void occuperDeBase(Player player) {
 
