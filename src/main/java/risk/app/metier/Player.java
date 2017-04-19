@@ -46,7 +46,7 @@ public class Player {
 		try {
 			while (table.getNCard() != 0) {
 				Carte C = new Carte(table.getHead());
-				table.deletHead();
+				table.deletHand();
 				this.hand.insertCard(C);
 
 			}

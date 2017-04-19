@@ -61,7 +61,7 @@ public class Hand {
 	 * supprime la dernière carte de la main Renvoie V si la suppression se
 	 * passe bien.
 	 */
-	public boolean deletHead() {
+	public boolean deletHand() {
 		if (this.NCard > 0) {
 			this.ListeCard[this.NCard - 1] = null;
 			this.NCard--;
