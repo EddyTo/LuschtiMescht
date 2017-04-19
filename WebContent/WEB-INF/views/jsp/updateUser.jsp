@@ -23,7 +23,6 @@
 			<h2 class="page-header text-center">Personal informations</h2>
 		
 			<form>
-		
 				<div class="container jumbotron">
 					<div class="row">
 						<div class="col-md-4"></div>
