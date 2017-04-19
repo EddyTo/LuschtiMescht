@@ -1,10 +1,10 @@
 package risk.app.metier;
 
-public class Dés {
+public class Des {
 
 	public static void main(String[] args) {
 
-	int nbAleatoire = Dés.nbAleatoire();
+	int nbAleatoire = Des.nbAleatoire();
 		System.out.println(nbAleatoire);
 
 	}

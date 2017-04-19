@@ -24,12 +24,12 @@ public class Combat {
 		
 	}
 	
-	private	static int nbDesDeffenseur1 = Dés.nbAleatoire();
-	private	static int nbDesDeffenseur2 = Dés.nbAleatoire();;
+	private	static int nbDesDeffenseur1 = Des.nbAleatoire();
+	private	static int nbDesDeffenseur2 = Des.nbAleatoire();;
 
-	private	static int nbDesAttaquant1 = Dés.nbAleatoire();;
-	private	static int nbDesAttaquant2 = Dés.nbAleatoire();;
-	private	static int nbDesAttaquant3 = Dés.nbAleatoire();;
+	private	static int nbDesAttaquant1 = Des.nbAleatoire();;
+	private	static int nbDesAttaquant2 = Des.nbAleatoire();;
+	private	static int nbDesAttaquant3 = Des.nbAleatoire();;
 	
 	private Boolean combatPossible = null;
 	
