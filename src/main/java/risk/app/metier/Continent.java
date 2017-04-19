@@ -1,11 +1,9 @@
 package risk.app.metier;
 
 public enum Continent {
-	Afrique,
-	AmeriqueDuNord,
-	AmeriqueDuSud,
-	Asie,
-	Europe,
-	Oceanie,
+
+	Pont,
+	Terre,
 	Ocean;
+
 }
