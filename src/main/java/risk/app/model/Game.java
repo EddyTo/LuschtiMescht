@@ -1,41 +1,46 @@
 package risk.app.model;
 
-import java.util.ArrayList;
-import java.util.Date;
+import java.io.Serializable;
+import java.sql.Date;
+import java.util.Collection;
+import javax.persistence.*;
 
-public class Game {
+
+@Entity
+public class Game implements Serializable{
+	private static final long serialVersionUID=1L;
 
 	private Long id;
-	private User gameWinner;
-	private ArrayList<User> playersList;
+	private Long gameWinnerId;
+	private Long[] playersListId;
 	private Date date;
 
 	public Game() {
 		super();
 	}
-
+	
+	@Id
+	@GeneratedValue(strategy =GenerationType.IDENTITY)
 	public Long getId() {
-		return id;
-	}
+		return id;}
 
 	public void setId(Long id) {
-		this.id = id;
+		this.id = id;}
+	
+	public Long[] getPlayersListId() {
+		return playersListId;
 	}
 
-	public User getGameWinner() {
-		return gameWinner;
+	public void setPlayersList(Long[] playersListId) {
+		this.playersListId = playersListId;
 	}
 
-	public void setGameWinner(User gameWinner) {
-		this.gameWinner = gameWinner;
+	public Long getGameWinnerId() {
+		return gameWinnerId;
 	}
 
-	public ArrayList<User> getPlayersList() {
-		return playersList;
-	}
-
-	public void setPlayersList(ArrayList<User> playersList) {
-		this.playersList = playersList;
+	public void setGameWinnerId(Long gameWinnerId) {
+		this.gameWinnerId = gameWinnerId;
 	}
 
 	public Date getDate() {
