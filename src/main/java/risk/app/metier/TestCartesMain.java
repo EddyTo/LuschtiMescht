@@ -49,15 +49,43 @@ public class TestCartesMain {
 		P3.afficher();
 
 		// On affiche le nombre d'armées par joueur
-		System.out.println("Joueur1 Rouge : " + P1.getArmee().getNbArmees() + " armées dont " + P1.countTerritoires()
+		System.out.println("Joueur1 Rouge : " + P1.countArmee() + " armées dont " + P1.countTerritoires()
 				+ " territoires, " + P1.countFantassins() + " fantassins x1, " + P1.countCavaliers() + " cavaliers x2, "
 				+ P1.countCanons() + " canons x3");
-		System.out.println("Joueur2 Jaune : " + P2.getArmee().getNbArmees() + " armées dont " + P2.countTerritoires()
+		System.out.println("Joueur2 Jaune : " + P2.countArmee() + " armées dont " + P2.countTerritoires()
 				+ " territoires, " + P2.countFantassins() + " fantassins x1, " + P2.countCavaliers() + " cavaliers x2, "
 				+ P2.countCanons() + " canons x3");
-		System.out.println("Joueur3 Rose : " + P3.getArmee().getNbArmees() + " armées dont " + P3.countTerritoires()
+		System.out.println("Joueur3 Rose : " + P3.countArmee() + " armées dont " + P3.countTerritoires()
 				+ " territoires, " + P3.countFantassins() + " fantassins x1, " + P3.countCavaliers() + " cavaliers x2, "
 				+ P3.countCanons() + " canons x3");
-	}
 
+		jeu.attribuerCouleur(P1);
+		jeu.attribuerCouleur(P2);
+		jeu.attribuerCouleur(P3);
+
+		jeu.occuperDeBase(P1);
+		jeu.occuperDeBase(P2);
+		jeu.occuperDeBase(P3);
+
+		System.out.println(jeu.getPlateau().getCasePlateau().get(13).getId());
+		System.out.println(P1.getCouleur());
+		System.out.println(jeu.getPlateau().getCasePlateau().get(13).getCouleur());
+
+		// On affiche le nombre d'armées par joueur
+		System.out.println("Joueur1 Rouge : " + P1.countArmee() + " armées dont " + P1.countTerritoires()
+				+ " territoires, " + P1.countFantassins() + " fantassins x1, " + P1.countCavaliers() + " cavaliers x2, "
+				+ P1.countCanons() + " canons x3");
+		System.out.println("Joueur2 Jaune : " + P2.countArmee() + " armées dont " + P2.countTerritoires()
+				+ " territoires, " + P2.countFantassins() + " fantassins x1, " + P2.countCavaliers() + " cavaliers x2, "
+				+ P2.countCanons() + " canons x3");
+		System.out.println("Joueur3 Rose : " + P3.countArmee() + " armées dont " + P3.countTerritoires()
+				+ " territoires, " + P3.countFantassins() + " fantassins x1, " + P3.countCavaliers() + " cavaliers x2, "
+				+ P3.countCanons() + " canons x3");
+
+		jeu.ajouterArmees(P1, "-5;-2", 2);
+
+		System.out.println("Joueur1 Rouge : " + P1.countArmee() + " armées dont " + P1.countTerritoires()
+				+ " territoires, " + P1.countFantassins() + " fantassins x1, " + P1.countCavaliers() + " cavaliers x2, "
+				+ P1.countCanons() + " canons x3");
+	}
 }

@@ -127,6 +127,18 @@ public class Hand {
 	}
 
 	/**
+	 * Renvoie l'id de la carte i
+	 */
+
+	public String getCardID(int i) {
+		return this.ListeCard[i].getId();
+	}
+
+	public String getCardTerritoire(int i) {
+		return this.ListeCard[i].getTerritoire();
+	}
+
+	/**
 	 * renvoie les territoires de la main courante
 	 */
 	public String toString() {
@@ -184,5 +196,6 @@ public class Hand {
 		}
 		return count;
 	}
+	
 
 }

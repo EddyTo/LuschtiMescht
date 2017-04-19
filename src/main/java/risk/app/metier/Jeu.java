@@ -9,6 +9,7 @@ public class Jeu {
 	private Player P5;
 	private Player P6;
 	private Hand table;
+	private Plateau plateau;
 	String Fichier;
 
 	/**
@@ -22,6 +23,8 @@ public class Jeu {
 		P5 = new Player("Bleu");
 		P6 = new Player("Vert");
 		table = new Hand();
+		plateau = new Plateau();
+
 	}
 
 	/**
@@ -196,6 +199,56 @@ public class Jeu {
 						+ 3 * P5.countCanons());
 				this.P6.setNbArmees(20 + P6.countTerritoires() + 1 * P6.countFantassins() + 2 * P6.countCavaliers()
 						+ 3 * P6.countCanons());
+			}
+		}
+	}
+
+	public Plateau getPlateau() {
+		return plateau;
+	}
+
+	/**
+	 * dispatcher les armées sur les territoires.
+	 */
+	// Attribue 1 armée à chaque territoire occupé (min obligatoire)
+
+	public void attribuerCouleur(Player player) {
+		for (int i = 0; i < plateau.getCasePlateau().size(); i++) {
+			for (int j = 0; j < player.getHand().getNCard(); j++) {
+				String plateauID = plateau.getCasePlateau().get(i).getId();
+				String territoireID = player.getHand().getListeCard()[j].getId();
+				String playerCouleur = player.getCouleur();
+				Position territoire = plateau.getCasePlateau().get(i);
+
+				if (plateauID.equals(territoireID)) {
+					territoire.setCouleur(playerCouleur);
+				}
+			}
+		}
+	}
+
+	public void occuperDeBase(Player player) {
+
+		for (int i = 0; i < plateau.getCasePlateau().size(); i++) {
+			String playerCouleur = player.getCouleur();
+			String territoireCouleur = plateau.getCasePlateau().get(i).getCouleur();
+			Position territoire = plateau.getCasePlateau().get(i);
+			int nbArmeeInit = player.getArmee().getNbArmees();
+			if (playerCouleur.equals(territoireCouleur)) {
+				territoire.setContenu(1);
+				player.setNbArmees(nbArmeeInit - 1);
+			}
+		}
+	}
+
+	public void ajouterArmees(Player player, String territoireID, int nbArmeesPositionnees) {
+		for (int i = 0; i < plateau.getCasePlateau().size(); i++) {
+			String plateauID = plateau.getCasePlateau().get(i).getId();
+			Position territoire = plateau.getCasePlateau().get(i);
+			int nbArmeeInit = player.getArmee().getNbArmees();
+			if (plateauID.equals(territoireID)) {
+				territoire.setContenu(nbArmeesPositionnees);
+				player.setNbArmees(nbArmeeInit - nbArmeesPositionnees);
 			}
 		}
 	}

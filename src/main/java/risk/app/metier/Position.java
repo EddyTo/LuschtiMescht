@@ -27,7 +27,7 @@ public class Position {
 		this.sudOuest = ((x-1) + ";" + (y-1));
 		this.continent = editContinent(id);
 		this.contenu=0;
-		this.couleur=null;
+		this.couleur="";
 	}
 	
 	private Continent editContinent(String id) {
