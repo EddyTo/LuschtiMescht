@@ -12,9 +12,6 @@ public class CombatAction {
 	Boolean combatActionDeff = null;
 	Boolean combatActionAttaque = null;
 
-	int nbArmeeMoi = 10;
-	int nbArmeeEnnemi = 5;
-
 	// Completer pour que maPosition prenne les infos lors du select de ma
 	// position
 	// Completer pour que ennemiPosition prenne les infos lors du select de
@@ -28,7 +25,7 @@ public class CombatAction {
 	// Passer combatPossible a true si les frontieres sont communes entre
 	// l'ennemy et le joueur
 
-	public void CombatAction() {
+	public void combatAction(int nbArmeeMoi, int nbArmeeEnnemi) {
 
 		if (combatActionAttaque == true) {
 
