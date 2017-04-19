@@ -12,14 +12,16 @@ public class Player {
 	private Hand hand;
 	private List<Hand> listeHand;
 	private Armees armee;
+	private Pions pion;
 
 	/**
 	 * Constructeur par initialisation.
 	 */
-	public Player() {
+	public Player(String couleur) {
 		this.listeHand = new Vector<Hand>();
 		hand = new Hand();
 		armee = new Armees();
+		pion = new Pions(couleur);
 	}
 
 	/**

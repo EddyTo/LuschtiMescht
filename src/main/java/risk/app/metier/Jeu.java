@@ -15,12 +15,12 @@ public class Jeu {
 	 * Constructeur par initialisation.
 	 */
 	public Jeu() {
-		P1 = new Player();
-		P2 = new Player();
-		P3 = new Player();
-		P4 = new Player();
-		P5 = new Player();
-		P6 = new Player();
+		P1 = new Player("Rouge");
+		P2 = new Player("Jaune");
+		P3 = new Player("Rose");
+		P4 = new Player("Noir");
+		P5 = new Player("Bleu");
+		P6 = new Player("Vert");
 		table = new Hand();
 	}
 
