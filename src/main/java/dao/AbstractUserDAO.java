@@ -14,5 +14,5 @@ public interface AbstractUserDAO {
 	public abstract User getUser(Long userId);
 	public abstract boolean userConnection(String username, String password);
 	public abstract boolean userExist(String username);
-	
+
 }
