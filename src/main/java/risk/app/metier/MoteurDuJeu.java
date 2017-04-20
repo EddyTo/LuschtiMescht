@@ -96,7 +96,7 @@ public class MoteurDuJeu {
 		return true;
 	}
 
-	public boolean combatEntreJoueur(int desAttaquant, int desDeffenseur, String territoireIDattaquant, String territoireIDdefenseur) {
+	public boolean combatEntreJoueurs(int desAttaquant, int desDeffenseur, String territoireIDattaquant, String territoireIDdefenseur) {
 		jeu.fight(desAttaquant, desDeffenseur, territoireIDattaquant, territoireIDdefenseur);
 		return true;
 	}
