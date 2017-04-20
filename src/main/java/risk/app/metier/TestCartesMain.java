@@ -88,4 +88,6 @@ public class TestCartesMain {
 				+ " territoires, " + P1.countFantassins() + " fantassins x1, " + P1.countCavaliers() + " cavaliers x2, "
 				+ P1.countCanons() + " canons x3");
 	}
+	
+	
 }
