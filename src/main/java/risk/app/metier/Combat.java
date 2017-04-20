@@ -7,7 +7,7 @@ public class Combat {
 	private static int nbDesAttaquant1;
 	private static int nbDesAttaquant2;
 	private static int nbDesAttaquant3;
-	
+
 	private static Boolean desDef1 = null;
 	private static Boolean desDef2 = null;
 	private static Boolean desAtt1 = null;
@@ -55,7 +55,6 @@ public class Combat {
 			desDef1 = true;
 			desDef2 = true;
 		}
-
 
 		return result;
 
