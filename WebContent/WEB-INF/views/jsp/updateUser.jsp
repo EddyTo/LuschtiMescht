@@ -47,12 +47,9 @@
 				<div class="text-center">
 					<a href="UpdatePassword" class="btn btn-primary">Change password</a>
 					<c:import url="../subviews/modal_askPassword.jsp" />
-					<button type="submit" id="link-confirm-password" class="btn btn-success"  data-toggle="modal" data-target="#modal-confirm-password" disabled="disabled">Confirm</button>
+					<button onclick="sendEmail();" type="submit" id="link-confirm-password" class="btn btn-success"  data-toggle="modal" data-target="#modal-confirm-password" disabled="disabled">Confirm</button>
 				</div>
-			</div>	
-				
-				
-			
+			</div>
 		
 		</div>
 		

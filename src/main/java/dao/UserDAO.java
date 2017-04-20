@@ -108,7 +108,7 @@ public class UserDAO implements AbstractUserDAO {
 		UserList users = getUsers();
 		User userResult = null;
 		for(User user: users.values()) {
-			if(user.getUsername() == username) {
+			if(user.getUsername().equals(username)) {
 				userResult = user;
 			}
 		}
@@ -132,7 +132,7 @@ public class UserDAO implements AbstractUserDAO {
 		UserList users = getUsers();
 		boolean connectionResult = false;
 		for(User user : users.values()) {
-			if(user.getUsername() == username && user.getPassword() == password) {
+			if(user.getUsername().equals(username) && user.getPassword().equals(password)) {
 				connectionResult = true;
 			}
 		}
@@ -144,7 +144,7 @@ public class UserDAO implements AbstractUserDAO {
 		UserList users = getUsers();
 		boolean userExist = false;
 		for(User user : users.values()) {
-			if(user.getUsername() == username) {
+			if(user.getUsername().equals(username)) {
 				userExist = true;
 			}
 		}

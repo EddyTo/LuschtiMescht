@@ -29,7 +29,6 @@ public class DetailUser extends HttpServlet {
 		if(username == null){
 			response.sendRedirect("index.html");
 		}else{
-			
 			UserDAO dao = UserDAO.getInstance();
 			request.getSession().setAttribute("email", dao.getUser(username).getEmail());
 			RequestDispatcher dispatch = request.getRequestDispatcher("WEB-INF/views/jsp/detailUser.jsp");

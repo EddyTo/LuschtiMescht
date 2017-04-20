@@ -33,13 +33,12 @@ public class LogIn extends HttpServlet {
 		DeleteUser.resetSessionVar(request, response);
 		LogIn.resetSessionVar(request, response);
 		
-		
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		
+
 		UserDAO dao = UserDAO.getInstance();
 		boolean ok = dao.userConnection(username, password);
-		
+
 		if(ok){
 			request.getSession().setAttribute("displayModalLogIn", false);
 			request.getSession().setAttribute("message", null);

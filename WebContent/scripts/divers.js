@@ -1,3 +1,7 @@
+function sendEmail(){
+	document.getElementById('reception-email').value = document.getElementById('email').value;
+}
+
 function displayModalLogIn(){
 	document.getElementById('link-modal-log-in').click();
 }
