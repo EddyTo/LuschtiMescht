@@ -37,8 +37,8 @@ public class LogIn extends HttpServlet {
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
 		
-		UserDAO dao = null;
-		boolean ok = dao.userConnection(username, password);
+		// UserDAO dao = null;
+		boolean ok = true; //dao.userConnection(username, password);
 		
 		if(ok){
 			request.getSession().setAttribute("displayModalLogIn", false);

@@ -18,6 +18,7 @@
 					<li><a href="" id="link-modal-log-in" data-toggle="modal" data-target="#modal-login">Log in</a></li>
 				</c:if>
 				<c:if test="${not empty login}">
+					<li><a href="<c:url value="/Lobby"/>">Join Lobby</a></li>
 					<li><a href="<c:url value="/DetailUser"/>">${login}</a></li>
 					<li><a href="<c:url value="/Logout"/>">Log out</a></li>
 				</c:if>
