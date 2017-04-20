@@ -318,6 +318,7 @@ public class Jeu {
 			}
 		}
 	}
+	
 	public boolean defaite(Player player){
 		String couleurJoueur = player.getCouleur();
 		int nbCasesPocede = 0;
@@ -333,5 +334,12 @@ public class Jeu {
 		else {
 			return false;
 		}
+	}
+	
+	public void fight(int desAttaquant, int desDeffenseur, String territoireIDattaquant, String territoireIDdefenseur){
+		int nbArmeesGagneesATK = Combat.globalFight(desAttaquant, desDeffenseur);
+		int nbArmeesGagneesDEF = -(nbArmeesGagneesATK);
+		modifArmeesATK(territoireIDattaquant, nbArmeesGagneesATK);
+		modifArmeesDEF(territoireIDattaquant, nbArmeesGagneesDEF);
 	}
 }

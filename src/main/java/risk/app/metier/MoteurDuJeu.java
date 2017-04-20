@@ -5,7 +5,7 @@ public class MoteurDuJeu {
 	public Jeu jeu;
 
 	// Creation et initialisation du Jeu
-	public void initialiserJeu(int nbJoueurs) {
+	public boolean initialiserJeu(int nbJoueurs) {
 
 		jeu = new Jeu();
 		Carte C[] = Carte.initDeck();
@@ -76,29 +76,33 @@ public class MoteurDuJeu {
 		} else {
 			System.out.println("Il faut être au moins 3 et maximum 6 joueurs pour jouer");
 		}
+		return true;
 	}
 
 	
 	// Placer les armées avant le premier tour
-	public void placementDesArmees(Player player, String territoireID, int nbArmeesPositionnees) {
+	public boolean placementDesArmees(Player player, String territoireID, int nbArmeesPositionnees) {
 		int nbArmeeInit = player.getArmee().getNbArmees();
 		if (nbArmeeInit >= nbArmeesPositionnees) {
 			jeu.placerArmees(player, territoireID, nbArmeesPositionnees);
 		}
+		return true;
 	}
 
 	
 	// Jouer un Tour
-	public void deplacement(String territoireIDdepart, String territoireIDarrivee, int nbArmees) {
+	public boolean deplacement(String territoireIDdepart, String territoireIDarrivee, int nbArmees) {
 		jeu.deplacerArmees(territoireIDdepart, territoireIDarrivee, nbArmees);
+		return true;
 	}
 
-	public void combatEntreJoueur(Player playerAttaquant, Player playerDefenseur, String territoireIDattaquant, String territoireIDdefenseur, int nbArmeesAttaquant, int nbArmeesDefenseur) {
-		int tamere;
+	public boolean combatEntreJoueur(int desAttaquant, int desDeffenseur, String territoireIDattaquant, String territoireIDdefenseur) {
+		jeu.fight(desAttaquant, desDeffenseur, territoireIDattaquant, territoireIDdefenseur);
+		return true;
 	}
 	
 	
-	// Victoire d'un joueur
+	// Défaite d'un joueur
 	public boolean joueurVaincu(Player player){
 		return jeu.defaite(player);
 	}
