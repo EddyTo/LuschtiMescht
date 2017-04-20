@@ -10,7 +10,7 @@ public class Jeu {
 	private Player P6;
 	private Hand table;
 	private Plateau plateau;
-	String Fichier;
+	String partieID;
 
 	/**
 	 * Constructeur par initialisation.
@@ -72,6 +72,14 @@ public class Jeu {
 			C[j] = t;
 		}
 		return C;
+	}
+
+	public String getPartieID() {
+		return partieID;
+	}
+
+	public void setPartieID(String partieID) {
+		this.partieID = partieID;
 	}
 
 	/**
@@ -265,7 +273,7 @@ public class Jeu {
 		}
 	}
 
-	public void gagnerArmees(String territoireID, int nbArmeesGagnees) {
+	public void modifArmeesATK(String territoireID, int nbArmeesGagnees) {
 		for (int i = 0; i < plateau.getCasePlateau().size(); i++) {
 			Position territoire = plateau.getCasePlateau().get(i);
 			String plateauID = territoire.getId();
@@ -276,15 +284,54 @@ public class Jeu {
 		}
 	}
 
-	public void perdreArmees(String territoireID, int nbArmeesGagnees) {
+	public void modifArmeesDEF(String territoireID, int nbArmeesPerdues) {
 		for (int i = 0; i < plateau.getCasePlateau().size(); i++) {
 			Position territoire = plateau.getCasePlateau().get(i);
 			String plateauID = territoire.getId();
 			int nbArmeeInit = territoire.getContenu();
 			if (plateauID.equals(territoireID)) {
-				territoire.setContenu(nbArmeeInit - nbArmeesGagnees);
+				territoire.setContenu(nbArmeeInit - nbArmeesPerdues);
 			}
 		}
 	}
 
+	public void deplacerArmees(String territoireDepart, String territoireArrivee, int nbArmees) {
+		for (int i = 0; i < plateau.getCasePlateau().size(); i++) {
+			Position plateauDepart = plateau.getCasePlateau().get(i);
+			String plateauIDDepart = plateauDepart.getId();
+			if (plateauIDDepart.equals(territoireDepart)) {
+				int nbArmeeInitDepart = plateauDepart.getContenu();
+				for (int j = 0; j < plateau.getCasePlateau().size(); j++) {
+					Position plateauArrivee = plateau.getCasePlateau().get(j);
+					String plateauIDArrivee = plateauArrivee.getId();
+					if (plateauIDArrivee.equals(territoireArrivee)) {
+						int nbArmeeInitArrivee = plateauArrivee.getContenu();
+						if (nbArmeeInitDepart - nbArmees > 0) {
+							plateauDepart.setContenu(nbArmeeInitDepart - nbArmees);
+							plateauArrivee.setContenu(nbArmeeInitArrivee + nbArmees);
+						} else {
+							plateauDepart.setContenu(1);
+							plateauArrivee.setContenu(nbArmeeInitArrivee + nbArmeeInitDepart - 1);
+						}
+					}
+				}
+			}
+		}
+	}
+	public boolean defaite(Player player){
+		String couleurJoueur = player.getCouleur();
+		int nbCasesPocede = 0;
+		for (int i = 0; i < plateau.getCasePlateau().size(); i++) {
+			String couleurTerritoire = plateau.getCasePlateau().get(i).getCouleur();
+			if(couleurTerritoire.equals(couleurJoueur)){
+				nbCasesPocede = nbCasesPocede + 1;
+			}
+		}
+		if (nbCasesPocede == 0){
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 }

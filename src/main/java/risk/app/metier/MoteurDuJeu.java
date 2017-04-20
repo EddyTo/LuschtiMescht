@@ -2,22 +2,16 @@ package risk.app.metier;
 
 public class MoteurDuJeu {
 
+	public Jeu jeu;
+
 	// Creation et initialisation du Jeu
 	public void initialiserJeu(int nbJoueurs) {
 
-		Jeu jeu = new Jeu();
+		jeu = new Jeu();
 		Carte C[] = Carte.initDeck();
 		Jeu.battre(C);
 
-		if (nbJoueurs == 2) {
-			Player P1 = jeu.getPlayer(1);
-			Player P2 = jeu.getPlayer(2);
-			jeu.distribuer(C, 2);
-			jeu.attribuerCouleur(P1);
-			jeu.attribuerCouleur(P2);
-			jeu.occuperDeBase(P1);
-			jeu.occuperDeBase(P2);
-		} else if (nbJoueurs == 3) {
+		if (nbJoueurs == 3) {
 			Player P1 = jeu.getPlayer(1);
 			Player P2 = jeu.getPlayer(2);
 			Player P3 = jeu.getPlayer(3);
@@ -80,21 +74,32 @@ public class MoteurDuJeu {
 			jeu.occuperDeBase(P5);
 			jeu.occuperDeBase(P6);
 		} else {
-			System.out.println("Il faut être au moins 2 et maximum 6 joueurs pour jouer");
+			System.out.println("Il faut être au moins 3 et maximum 6 joueurs pour jouer");
 		}
 	}
 
 	
 	// Placer les armées avant le premier tour
-	public void placementDesArmees(Player player, String territoireID, int nbArmeesPositionnees){
-		jeu.ajouterArmees(player, territoireID, nbArmeesPositionnees);
+	public void placementDesArmees(Player player, String territoireID, int nbArmeesPositionnees) {
+		int nbArmeeInit = player.getArmee().getNbArmees();
+		if (nbArmeeInit >= nbArmeesPositionnees) {
+			jeu.placerArmees(player, territoireID, nbArmeesPositionnees);
+		}
+	}
+
+	
+	// Jouer un Tour
+	public void deplacement(String territoireIDdepart, String territoireIDarrivee, int nbArmees) {
+		jeu.deplacerArmees(territoireIDdepart, territoireIDarrivee, nbArmees);
+	}
+
+	public void combatEntreJoueur(Player playerAttaquant, Player playerDefenseur, String territoireIDattaquant, String territoireIDdefenseur, int nbArmeesAttaquant, int nbArmeesDefenseur) {
+		int tamere;
 	}
 	
-
-	// Jouer un Tour
 	
-
 	// Victoire d'un joueur
-	
-
+	public boolean joueurVaincu(Player player){
+		return jeu.defaite(player);
+	}
 }
