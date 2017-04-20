@@ -12,82 +12,71 @@ public class CombatAction {
 	Boolean combatActionDeff = null;
 	Boolean combatActionAttaque = null;
 
-	// Completer pour que maPosition prenne les infos lors du select de ma
-	// position
-	// Completer pour que ennemiPosition prenne les infos lors du select de
-	// l'ennemi
-
-	// Position ennemiPosition = position();
-	// String nbArmeeMoi = maPosition.getContenu();
-
-	// String nbArmeeEnemi = ennemiPosition.getContenu();
-
-	// Passer combatPossible a true si les frontieres sont communes entre
-	// l'ennemy et le joueur
-
-	public void combatAction(int nbArmeeMoi, int nbArmeeEnnemi) {
-
+	public int combatAction() {
+		
+		int result = 0;
+		
 		if (combatActionAttaque == true) {
 
 			if (resultatCombat1 == true) {
 
-				nbArmeeMoi = nbArmeeMoi - 1;
+				result = -1;
 
 			}
 
 			else if (resultatCombat1 == false) {
 
-				nbArmeeEnnemi = nbArmeeEnnemi - 1;
+				result = 1;
 			}
 
 			if (resultatCombat2 == true) {
 
-				nbArmeeMoi = nbArmeeMoi - 1;
+				result = -1;
 			}
 
 			else if (resultatCombat2 == false) {
 
-				nbArmeeEnnemi = nbArmeeEnnemi - 2;
+				result = 2;
 			}
 
 			if (resultatCombat3 == true) {
 
-				nbArmeeMoi = nbArmeeMoi - 2;
+				result = -2;
 			}
 
 			else if (resultatCombat3 == false) {
 
-				nbArmeeEnnemi = nbArmeeEnnemi - 1;
+				result = 1;
 			}
 
 			if (resultatCombat4 == true) {
 
-				nbArmeeMoi = nbArmeeMoi - 3;
+				result = -3;
 			}
 
 			else if (resultatCombat4 == false) {
 
-				nbArmeeEnnemi = nbArmeeEnnemi - 1;
+				result = 1;
 			}
 
 			if (resultatCombat5 == true) {
 
-				nbArmeeMoi = nbArmeeMoi - 2;
+				result = -2;
 			}
 
 			else if (resultatCombat5 == false) {
 
-				nbArmeeEnnemi = nbArmeeEnnemi - 2;
+				result = 2;
 			}
 
 			if (resultatCombat6 == true) {
 
-				nbArmeeMoi = nbArmeeMoi - 3;
+				result = -3;
 			}
 
 			else if (resultatCombat6 == false) {
 
-				nbArmeeEnnemi = nbArmeeEnnemi - 2;
+				result = 2;
 			}
 
 		}
@@ -96,73 +85,74 @@ public class CombatAction {
 
 			if (resultatCombat1 == true) {
 
-				nbArmeeEnnemi = nbArmeeEnnemi - 1;
+				result = -1;
 
 			}
 
 			else if (resultatCombat1 == false) {
 
-				nbArmeeMoi = nbArmeeMoi - 1;
+				result = 1;
 
 			}
 
 			if (resultatCombat2 == true) {
 
-				nbArmeeEnnemi = nbArmeeEnnemi - 1;
+				result = -1;
 
 			}
 
 			else if (resultatCombat2 == false) {
 
-				nbArmeeMoi = nbArmeeMoi - 2;
+				result = 2;
 			}
 
 			if (resultatCombat3 == true) {
 
-				nbArmeeEnnemi = nbArmeeEnnemi - 2;
+				result = -2;
 
 			}
 
 			else if (resultatCombat3 == false) {
 
-				nbArmeeMoi = nbArmeeMoi - 1;
+				result = 1;
 
 			}
 
 			if (resultatCombat4 == true) {
 
-				nbArmeeEnnemi = nbArmeeEnnemi - 3;
+				result = -3;
 
 			}
 
 			else if (resultatCombat4 == false) {
 
-				nbArmeeMoi = nbArmeeMoi - 1;
+				result = 1;
 			}
 
 			if (resultatCombat5 == true) {
 
-				nbArmeeEnnemi = nbArmeeEnnemi - 2;
+				result = -2;
 
 			}
 
 			else if (resultatCombat5 == false) {
 
-				nbArmeeMoi = nbArmeeMoi - 2;
+				result = 2;
 			}
 
 			if (resultatCombat6 == true) {
 
-				nbArmeeEnnemi = nbArmeeEnnemi - 3;
+				result = -3;
 
 			}
 
 			else if (resultatCombat6 == false) {
 
-				nbArmeeMoi = nbArmeeMoi - 2;
+				result = 2;
 			}
 
 		}
+		return result;
 
 	}
 }
