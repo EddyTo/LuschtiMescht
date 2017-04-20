@@ -2,12 +2,7 @@ package risk.app.metier;
 
 public class Des {
 
-	public static void main(String[] args) {
-
 	int nbAleatoire = Des.nbAleatoire();
-		System.out.println(nbAleatoire);
-
-	}
 
 	public static Integer nbAleatoire() {
 
