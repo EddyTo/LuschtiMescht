@@ -102,12 +102,12 @@ public class Jeu {
 					this.P3.addCard(C[i]);
 					i++;
 				}
-				this.P1.setNbArmees(35 + P1.countTerritoires() + 1 * P1.countFantassins() + 2 * P1.countCavaliers()
-						+ 3 * P1.countCanons());
-				this.P2.setNbArmees(35 + P2.countTerritoires() + 1 * P2.countFantassins() + 2 * P2.countCavaliers()
-						+ 3 * P2.countCanons());
-				this.P3.setNbArmees(35 + P3.countTerritoires() + 1 * P3.countFantassins() + 2 * P3.countCavaliers()
-						+ 3 * P3.countCanons());
+				this.P1.setNbArmees(35 + P1.countTerritoires() + 1 * P1.countLaser() + 2 * P1.countCanonDeGauss()
+						+ 3 * P1.countPlasma());
+				this.P2.setNbArmees(35 + P2.countTerritoires() + 1 * P2.countLaser() + 2 * P2.countCanonDeGauss()
+						+ 3 * P2.countPlasma());
+				this.P3.setNbArmees(35 + P3.countTerritoires() + 1 * P3.countLaser() + 2 * P3.countCanonDeGauss()
+						+ 3 * P3.countPlasma());
 			}
 
 			if (nbJoueurs == 4) {
@@ -127,14 +127,14 @@ public class Jeu {
 					this.P4.addCard(C[i]);
 					i++;
 				}
-				this.P1.setNbArmees(30 + P1.countTerritoires() + 1 * P1.countFantassins() + 2 * P1.countCavaliers()
-						+ 3 * P1.countCanons());
-				this.P2.setNbArmees(30 + P2.countTerritoires() + 1 * P2.countFantassins() + 2 * P2.countCavaliers()
-						+ 3 * P2.countCanons());
-				this.P3.setNbArmees(30 + P3.countTerritoires() + 1 * P3.countFantassins() + 2 * P3.countCavaliers()
-						+ 3 * P3.countCanons());
-				this.P4.setNbArmees(30 + P4.countTerritoires() + 1 * P4.countFantassins() + 2 * P4.countCavaliers()
-						+ 3 * P4.countCanons());
+				this.P1.setNbArmees(30 + P1.countTerritoires() + 1 * P1.countLaser() + 2 * P1.countCanonDeGauss()
+						+ 3 * P1.countPlasma());
+				this.P2.setNbArmees(30 + P2.countTerritoires() + 1 * P2.countLaser() + 2 * P2.countCanonDeGauss()
+						+ 3 * P2.countPlasma());
+				this.P3.setNbArmees(30 + P3.countTerritoires() + 1 * P3.countLaser() + 2 * P3.countCanonDeGauss()
+						+ 3 * P3.countPlasma());
+				this.P4.setNbArmees(30 + P4.countTerritoires() + 1 * P4.countLaser() + 2 * P4.countCanonDeGauss()
+						+ 3 * P4.countPlasma());
 			}
 
 			if (nbJoueurs == 5) {
@@ -158,16 +158,16 @@ public class Jeu {
 					this.P5.addCard(C[i]);
 					i++;
 				}
-				this.P1.setNbArmees(25 + P1.countTerritoires() + 1 * P1.countFantassins() + 2 * P1.countCavaliers()
-						+ 3 * P1.countCanons());
-				this.P2.setNbArmees(25 + P2.countTerritoires() + 1 * P2.countFantassins() + 2 * P2.countCavaliers()
-						+ 3 * P2.countCanons());
-				this.P3.setNbArmees(25 + P3.countTerritoires() + 1 * P3.countFantassins() + 2 * P3.countCavaliers()
-						+ 3 * P3.countCanons());
-				this.P4.setNbArmees(25 + P4.countTerritoires() + 1 * P4.countFantassins() + 2 * P4.countCavaliers()
-						+ 3 * P4.countCanons());
-				this.P5.setNbArmees(25 + P5.countTerritoires() + 1 * P5.countFantassins() + 2 * P5.countCavaliers()
-						+ 3 * P5.countCanons());
+				this.P1.setNbArmees(25 + P1.countTerritoires() + 1 * P1.countLaser() + 2 * P1.countCanonDeGauss()
+						+ 3 * P1.countPlasma());
+				this.P2.setNbArmees(25 + P2.countTerritoires() + 1 * P2.countLaser() + 2 * P2.countCanonDeGauss()
+						+ 3 * P2.countPlasma());
+				this.P3.setNbArmees(25 + P3.countTerritoires() + 1 * P3.countLaser() + 2 * P3.countCanonDeGauss()
+						+ 3 * P3.countPlasma());
+				this.P4.setNbArmees(25 + P4.countTerritoires() + 1 * P4.countLaser() + 2 * P4.countCanonDeGauss()
+						+ 3 * P4.countPlasma());
+				this.P5.setNbArmees(25 + P5.countTerritoires() + 1 * P5.countLaser() + 2 * P5.countCanonDeGauss()
+						+ 3 * P5.countPlasma());
 			}
 
 			if (nbJoueurs == 6) {
@@ -195,18 +195,18 @@ public class Jeu {
 					this.P6.addCard(C[i]);
 					i++;
 				}
-				this.P1.setNbArmees(20 + P1.countTerritoires() + 1 * P1.countFantassins() + 2 * P1.countCavaliers()
-						+ 3 * P1.countCanons());
-				this.P2.setNbArmees(20 + P2.countTerritoires() + 1 * P2.countFantassins() + 2 * P2.countCavaliers()
-						+ 3 * P2.countCanons());
-				this.P3.setNbArmees(20 + P3.countTerritoires() + 1 * P3.countFantassins() + 2 * P3.countCavaliers()
-						+ 3 * P3.countCanons());
-				this.P4.setNbArmees(20 + P4.countTerritoires() + 1 * P4.countFantassins() + 2 * P4.countCavaliers()
-						+ 3 * P4.countCanons());
-				this.P5.setNbArmees(20 + P5.countTerritoires() + 1 * P5.countFantassins() + 2 * P5.countCavaliers()
-						+ 3 * P5.countCanons());
-				this.P6.setNbArmees(20 + P6.countTerritoires() + 1 * P6.countFantassins() + 2 * P6.countCavaliers()
-						+ 3 * P6.countCanons());
+				this.P1.setNbArmees(20 + P1.countTerritoires() + 1 * P1.countLaser() + 2 * P1.countCanonDeGauss()
+						+ 3 * P1.countPlasma());
+				this.P2.setNbArmees(20 + P2.countTerritoires() + 1 * P2.countLaser() + 2 * P2.countCanonDeGauss()
+						+ 3 * P2.countPlasma());
+				this.P3.setNbArmees(20 + P3.countTerritoires() + 1 * P3.countLaser() + 2 * P3.countCanonDeGauss()
+						+ 3 * P3.countPlasma());
+				this.P4.setNbArmees(20 + P4.countTerritoires() + 1 * P4.countLaser() + 2 * P4.countCanonDeGauss()
+						+ 3 * P4.countPlasma());
+				this.P5.setNbArmees(20 + P5.countTerritoires() + 1 * P5.countLaser() + 2 * P5.countCanonDeGauss()
+						+ 3 * P5.countPlasma());
+				this.P6.setNbArmees(20 + P6.countTerritoires() + 1 * P6.countLaser() + 2 * P6.countCanonDeGauss()
+						+ 3 * P6.countPlasma());
 			}
 		}
 	}
@@ -313,6 +313,8 @@ public class Jeu {
 							plateauDepart.setContenu(1);
 							plateauArrivee.setContenu(nbArmeeInitArrivee + nbArmeeInitDepart - 1);
 						}
+						i = plateau.getCasePlateau().size();
+						j = plateau.getCasePlateau().size();
 					}
 				}
 			}

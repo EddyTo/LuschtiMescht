@@ -134,17 +134,13 @@ public class Hand {
 		return this.ListeCard[i].getId();
 	}
 
-	public String getCardTerritoire(int i) {
-		return this.ListeCard[i].getTerritoire();
-	}
-
 	/**
 	 * renvoie les territoires de la main courante
 	 */
 	public String toString() {
 		String S = new String("");
 		for (int i = 0; i < this.NCard; i++) {
-			S = S + this.ListeCard[i].getTerritoire();
+			S = S + this.ListeCard[i].getId();
 		}
 		return S;
 	}
@@ -177,7 +173,7 @@ public class Hand {
 		int count = 0;
 
 		for (int i = 0; i < this.NCard; i++) {
-			String territoire = this.ListeCard[i].getTerritoire();
+			String territoire = this.ListeCard[i].getId();
 			if (territoire != "Joker1" && territoire != "Joker2") {
 				count++;
 			}
@@ -196,6 +192,5 @@ public class Hand {
 		}
 		return count;
 	}
-	
 
 }
