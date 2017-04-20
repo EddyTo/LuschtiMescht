@@ -74,6 +74,14 @@ public class Jeu {
 		return C;
 	}
 
+	public String getPartieID() {
+		return partieID;
+	}
+
+	public void setPartieID(String partieID) {
+		this.partieID = partieID;
+	}
+
 	/**
 	 * distribuer un jeu de carte sur les n joueurs.
 	 */
