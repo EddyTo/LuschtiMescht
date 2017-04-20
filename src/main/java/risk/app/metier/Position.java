@@ -3,6 +3,7 @@ package risk.app.metier;
 public class Position {
 	private int x;
 	private int y;
+	private int identifiant;
 	private String id;
 	private String est;
 	private String ouest;
@@ -18,6 +19,7 @@ public class Position {
 	public Position(int x, int y) {
 		this.x=x;
 		this.y=y;
+		this.identifiant=0;
 		this.id=(x + ";" + y);
 		this.est = ((x+2) + ";" + y);
 		this.ouest = ((x-2) + ";" + y);
@@ -56,97 +58,86 @@ public class Position {
 		
 	}
 
-
 	public int getX() {
 		return x;
 	}
-
 
 	public void setX(int x) {
 		this.x = x;
 	}
 
-
 	public int getY() {
 		return y;
 	}
-
 
 	public void setY(int y) {
 		this.y = y;
 	}
 
+	public int getIdentifiant() {
+		return identifiant;
+	}
+
+	public void setIdentifiant(int identifiant) {
+		this.identifiant = identifiant;
+	}
 
 	public String getId() {
 		return id;
 	}
 
-
 	public void setId(String id) {
 		this.id = id;
 	}
-
 
 	public String getEst() {
 		return est;
 	}
 
-
 	public void setEst(String est) {
 		this.est = est;
 	}
-
 
 	public String getOuest() {
 		return ouest;
 	}
 
-
 	public void setOuest(String ouest) {
 		this.ouest = ouest;
 	}
-
 
 	public String getNordEst() {
 		return nordEst;
 	}
 
-
 	public void setNordEst(String nordEst) {
 		this.nordEst = nordEst;
 	}
-
 
 	public String getSudEst() {
 		return sudEst;
 	}
 
-
 	public void setSudEst(String sudEst) {
 		this.sudEst = sudEst;
 	}
-
 
 	public String getNordOuest() {
 		return nordOuest;
 	}
 
-
 	public void setNordOuest(String nordOuest) {
 		this.nordOuest = nordOuest;
 	}
-
 
 	public String getSudOuest() {
 		return sudOuest;
 	}
 
-
 	public void setSudOuest(String sudOuest) {
 		this.sudOuest = sudOuest;
 	}
 
-	
 	public Continent getContinent() {
 		return continent;
 	}
@@ -155,25 +146,20 @@ public class Position {
 		this.continent = continent;
 	}
 
-	
 	public int getContenu() {
 		return contenu;
 	}
-
 
 	public void setContenu(int contenu) {
 		this.contenu = contenu;
 	}
 
-
 	public String getCouleur() {
 		return couleur;
 	}
 
-
 	public void setCouleur(String couleur) {
 		this.couleur = couleur;
 	}
-	
 	
 }

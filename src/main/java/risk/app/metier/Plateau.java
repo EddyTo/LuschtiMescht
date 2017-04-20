@@ -24,6 +24,9 @@ public class Plateau {
 				}
 			}
 		}
+		for (int i = 0; i < getCasePlateau().size(); i++) {
+			getCasePlateau().get(i).setIdentifiant(i);
+		}
 	}
 	
 	
