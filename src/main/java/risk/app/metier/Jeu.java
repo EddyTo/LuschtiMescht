@@ -310,5 +310,20 @@ public class Jeu {
 			}
 		}
 	}
-
+	public boolean defaite(Player player){
+		String couleurJoueur = player.getCouleur();
+		int nbCasesPocede = 0;
+		for (int i = 0; i < plateau.getCasePlateau().size(); i++) {
+			String couleurTerritoire = plateau.getCasePlateau().get(i).getCouleur();
+			if(couleurTerritoire.equals(couleurJoueur)){
+				nbCasesPocede = nbCasesPocede + 1;
+			}
+		}
+		if (nbCasesPocede == 0){
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
 }
