@@ -10,7 +10,7 @@ public class Jeu {
 	private Player P6;
 	private Hand table;
 	private Plateau plateau;
-	String Fichier;
+	String partieID;
 
 	/**
 	 * Constructeur par initialisation.
