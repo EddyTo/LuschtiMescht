@@ -226,7 +226,7 @@ public class Jeu {
 			}
 		}
 	}
-	
+
 	public Position identifierCase(String territoireID) {
 		for (int i = 0; i < plateau.getCasePlateau().size(); i++) {
 			String plateauID = plateau.getCasePlateau().get(i).getId();
@@ -239,11 +239,10 @@ public class Jeu {
 	}
 
 	public void occuperDeBase(Player player) {
-
 		for (int i = 0; i < plateau.getCasePlateau().size(); i++) {
 			String playerCouleur = player.getCouleur();
-			String territoireCouleur = plateau.getCasePlateau().get(i).getCouleur();
 			Position territoire = plateau.getCasePlateau().get(i);
+			String territoireCouleur = territoire.getCouleur();
 			int nbArmeeInit = player.getArmee().getNbArmees();
 			if (playerCouleur.equals(territoireCouleur)) {
 				territoire.setContenu(1);
@@ -252,14 +251,38 @@ public class Jeu {
 		}
 	}
 
-	public void ajouterArmees(Player player, String territoireID, int nbArmeesPositionnees) {
+	public void placerArmees(Player player, String territoireID, int nbArmeesPositionnees) {
 		for (int i = 0; i < plateau.getCasePlateau().size(); i++) {
-			String plateauID = plateau.getCasePlateau().get(i).getId();
 			Position territoire = plateau.getCasePlateau().get(i);
+			String plateauID = territoire.getId();
 			int nbArmeeInit = player.getArmee().getNbArmees();
+			if (nbArmeeInit > 0) {
+				if (plateauID.equals(territoireID)) {
+					territoire.setContenu(nbArmeesPositionnees);
+					player.setNbArmees(nbArmeeInit - nbArmeesPositionnees);
+				}
+			}
+		}
+	}
+
+	public void gagnerArmees(String territoireID, int nbArmeesGagnees) {
+		for (int i = 0; i < plateau.getCasePlateau().size(); i++) {
+			Position territoire = plateau.getCasePlateau().get(i);
+			String plateauID = territoire.getId();
+			int nbArmeeInit = territoire.getContenu();
 			if (plateauID.equals(territoireID)) {
-				territoire.setContenu(nbArmeesPositionnees);
-				player.setNbArmees(nbArmeeInit - nbArmeesPositionnees);
+				territoire.setContenu(nbArmeeInit + nbArmeesGagnees);
+			}
+		}
+	}
+
+	public void perdreArmees(String territoireID, int nbArmeesGagnees) {
+		for (int i = 0; i < plateau.getCasePlateau().size(); i++) {
+			Position territoire = plateau.getCasePlateau().get(i);
+			String plateauID = territoire.getId();
+			int nbArmeeInit = territoire.getContenu();
+			if (plateauID.equals(territoireID)) {
+				territoire.setContenu(nbArmeeInit - nbArmeesGagnees);
 			}
 		}
 	}

@@ -82,7 +82,7 @@ public class TestCartesMain {
 				+ " territoires, " + P3.countFantassins() + " fantassins x1, " + P3.countCavaliers() + " cavaliers x2, "
 				+ P3.countCanons() + " canons x3");
 
-		jeu.ajouterArmees(P1, "-5;-2", 2);
+		jeu.placerArmees(P1, "-5;-2", 2);
 
 		System.out.println("Joueur1 Rouge : " + P1.countArmee() + " armées dont " + P1.countTerritoires()
 				+ " territoires, " + P1.countFantassins() + " fantassins x1, " + P1.countCavaliers() + " cavaliers x2, "
