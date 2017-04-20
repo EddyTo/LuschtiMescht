@@ -50,14 +50,14 @@ public class TestCartesMain {
 
 		// On affiche le nombre d'armées par joueur
 		System.out.println("Joueur1 Rouge : " + P1.countArmee() + " armées dont " + P1.countTerritoires()
-				+ " territoires, " + P1.countFantassins() + " fantassins x1, " + P1.countCavaliers() + " cavaliers x2, "
-				+ P1.countCanons() + " canons x3");
+				+ " territoires, " + P1.countLaser() + " Lasers x1, " + P1.countCanonDeGauss() + " Plasmas x2, "
+				+ P1.countPlasma() + " Canons de Gauss x3");
 		System.out.println("Joueur2 Jaune : " + P2.countArmee() + " armées dont " + P2.countTerritoires()
-				+ " territoires, " + P2.countFantassins() + " fantassins x1, " + P2.countCavaliers() + " cavaliers x2, "
-				+ P2.countCanons() + " canons x3");
+				+ " territoires, " + P2.countLaser() + " Lasers x1, " + P2.countCanonDeGauss() + " Plasmas x2, "
+				+ P2.countPlasma() + " Canons de Gauss x3");
 		System.out.println("Joueur3 Rose : " + P3.countArmee() + " armées dont " + P3.countTerritoires()
-				+ " territoires, " + P3.countFantassins() + " fantassins x1, " + P3.countCavaliers() + " cavaliers x2, "
-				+ P3.countCanons() + " canons x3");
+				+ " territoires, " + P3.countLaser() + " Lasers x1, " + P3.countCanonDeGauss() + " Plasmas x2, "
+				+ P3.countPlasma() + " Canons de Gauss x3");
 
 		jeu.attribuerCouleur(P1);
 		jeu.attribuerCouleur(P2);
@@ -73,21 +73,20 @@ public class TestCartesMain {
 
 		// On affiche le nombre d'armées par joueur
 		System.out.println("Joueur1 Rouge : " + P1.countArmee() + " armées dont " + P1.countTerritoires()
-				+ " territoires, " + P1.countFantassins() + " fantassins x1, " + P1.countCavaliers() + " cavaliers x2, "
-				+ P1.countCanons() + " canons x3");
+				+ " territoires, " + P1.countLaser() + " Lasers x1, " + P1.countCanonDeGauss() + " Plasmas x2, "
+				+ P1.countPlasma() + " Canons de Gauss x3");
 		System.out.println("Joueur2 Jaune : " + P2.countArmee() + " armées dont " + P2.countTerritoires()
-				+ " territoires, " + P2.countFantassins() + " fantassins x1, " + P2.countCavaliers() + " cavaliers x2, "
-				+ P2.countCanons() + " canons x3");
+				+ " territoires, " + P2.countLaser() + " Lasers x1, " + P2.countCanonDeGauss() + " Plasmas x2, "
+				+ P2.countPlasma() + " Canons de Gauss x3");
 		System.out.println("Joueur3 Rose : " + P3.countArmee() + " armées dont " + P3.countTerritoires()
-				+ " territoires, " + P3.countFantassins() + " fantassins x1, " + P3.countCavaliers() + " cavaliers x2, "
-				+ P3.countCanons() + " canons x3");
+				+ " territoires, " + P3.countLaser() + " Lasers x1, " + P3.countCanonDeGauss() + " Plasmas x2, "
+				+ P3.countPlasma() + " Canons de Gauss x3");
 
 		jeu.placerArmees(P1, "-5;-2", 2);
 
 		System.out.println("Joueur1 Rouge : " + P1.countArmee() + " armées dont " + P1.countTerritoires()
-				+ " territoires, " + P1.countFantassins() + " fantassins x1, " + P1.countCavaliers() + " cavaliers x2, "
-				+ P1.countCanons() + " canons x3");
+				+ " territoires, " + P1.countLaser() + " Lasers x1, " + P1.countCanonDeGauss() + " Plasmas x2, "
+				+ P1.countPlasma() + " Canons de Gauss x3");
 	}
-	
-	
+
 }

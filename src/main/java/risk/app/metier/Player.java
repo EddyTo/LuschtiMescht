@@ -96,16 +96,16 @@ public class Player {
 		return this.hand.countTerritoires();
 	}
 
-	public int countFantassins() {
-		return this.hand.countArmes("fantassin");
+	public int countLaser() {
+		return this.hand.countArmes("Laser");
 	}
 
-	public int countCanons() {
-		return this.hand.countArmes("canon");
+	public int countPlasma() {
+		return this.hand.countArmes("Plasma");
 	}
 
-	public int countCavaliers() {
-		return this.hand.countArmes("cavalier");
+	public int countCanonDeGauss() {
+		return this.hand.countArmes("Canon de Gauss");
 	}
 	
 	public int countArmee() {
