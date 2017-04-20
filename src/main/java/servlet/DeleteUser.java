@@ -32,7 +32,7 @@ public class DeleteUser extends HttpServlet {
 		String username = (String) request.getSession().getAttribute("login");
 		String pwd = request.getParameter("password");
 		
-		UserDAO dao = null;
+		UserDAO dao = UserDAO.getInstance();
 		boolean ok = dao.userConnection(username, pwd);
 		
 		if(ok){
