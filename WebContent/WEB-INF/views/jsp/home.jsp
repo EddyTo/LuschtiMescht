@@ -20,7 +20,7 @@
 		
 		<!-- BODY -->
 		<div class="container">
-			<h1 class="page-header text-center">Das esch a LuschtiMescht !</h1>
+			<h1 class="page-header text-center">Dàs esch a LuschtiMescht !</h1>
 			<img class="center-block" src="images/risk.jpg" alt="" style="width:600;height:375;">
 		</div>
 		
