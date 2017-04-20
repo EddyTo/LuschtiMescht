@@ -2,10 +2,11 @@ package risk.app.metier;
 
 public class MoteurDuJeu {
 
+		Jeu jeu;
 	// Creation et initialisation du Jeu
 	public void initialiserJeu(int nbJoueurs) {
 
-		Jeu jeu = new Jeu();
+		jeu = new Jeu();
 		Carte C[] = Carte.initDeck();
 		Jeu.battre(C);
 
@@ -87,11 +88,22 @@ public class MoteurDuJeu {
 	
 	// Placer les armées avant le premier tour
 	public void placementDesArmees(Player player, String territoireID, int nbArmeesPositionnees){
-		jeu.ajouterArmees(player, territoireID, nbArmeesPositionnees);
+		int nbArmeeInit = player.getArmee().getNbArmees();
+		if (nbArmeeInit >= nbArmeesPositionnees){
+			jeu.placerArmees(player, territoireID, nbArmeesPositionnees);
+		}
 	}
 	
-
 	// Jouer un Tour
+	public void deplacementEtCombat(Player playerAttaquant, Player playerDefenseur, String territoireIDdepart, String territoireIDarrivee, int nbArmeesPositionnees){
+		Position depart = jeu.identifierCase(territoireIDdepart);
+		Position arrivee = jeu.identifierCase(territoireIDarrivee);
+		String couleurDepart = depart.getCouleur();
+		String couleurarrivee = arrivee.getCouleur();
+		if (couleurDepart.equals(couleurarrivee)){
+			jeu.placerArmees(playerAttaquant, territoireID, nbArmeesPositionnees);
+		}
+	}
 	
 
 	// Victoire d'un joueur
