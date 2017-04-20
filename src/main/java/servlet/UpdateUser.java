@@ -28,7 +28,7 @@ public class UpdateUser extends HttpServlet {
 		if (username == null) {
 			response.sendRedirect("index.html");
 		} else {
-			UserDAO dao = null;
+			UserDAO dao = UserDAO.getInstance();
 			request.getSession().setAttribute("email", dao.getUser(username).getEmail());
 			RequestDispatcher dispatch = request.getRequestDispatcher("WEB-INF/views/jsp/updateUser.jsp");
 			dispatch.forward(request, response);
@@ -40,13 +40,16 @@ public class UpdateUser extends HttpServlet {
 		String username = (String) request.getSession().getAttribute("login");
 		String password = (String) request.getParameter("pwd");
 	
-		UserDAO dao = null;
+		UserDAO dao = UserDAO.getInstance();
 		boolean ok = dao.userConnection(username, password);
 		
 		if(ok){
 			resetSessionVar(request, response);
+			
 			User newuser = dao.getUser(username);
-			newuser.setEmail(request.getParameter("email"));
+			newuser.setEmail(request.getParameter("reception-email"));
+			request.getSession().setAttribute("email", newuser.getEmail());
+
 			dao.updateUserMail(newuser);
 			RequestDispatcher dispatch = request.getRequestDispatcher("/WEB-INF/views/jsp/detailUser.jsp");
 			dispatch.forward(request, response);

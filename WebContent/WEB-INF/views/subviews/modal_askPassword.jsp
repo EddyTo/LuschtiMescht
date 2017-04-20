@@ -20,7 +20,11 @@
         		<button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>	
         		<button type="submit" class="btn btn-danger">C0nf1rm</button>
       		</div>
+      		
+      		<input type="text" id="reception-email" name="reception-email" class="hidden" />
       	</form>
+      	
+      	
       </div>
       
       <div class="modal-footer">

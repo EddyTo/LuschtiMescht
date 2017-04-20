@@ -36,7 +36,7 @@ public class UpdatePassword extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String username = (String) request.getSession().getAttribute("login");
-		UserDAO dao = null;
+		UserDAO dao = UserDAO.getInstance();
 		User user = dao.getUser(username);
 		
 		String previousPassword = request.getParameter("previousPassword");

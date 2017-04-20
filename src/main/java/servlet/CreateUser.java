@@ -40,7 +40,7 @@ public class CreateUser extends HttpServlet {
 		user.setEmail(email);
 		user.setPassword(password);
 		
-		UserDAO dao = null;
+		UserDAO dao = UserDAO.getInstance();
 		dao.createUser(user);
 		
 		request.getSession().setAttribute("displayModalLogIn", false);
