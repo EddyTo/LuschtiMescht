@@ -1,41 +1,89 @@
 package risk.app.metier;
 
+
+
 public class Combat {
 
-	Boolean Msg1 = Combat.combatType1();
-
-	Boolean Msg2 = Combat.combatType2();
-
-	Boolean Msg3 = Combat.combatType3();
-
-	Boolean Msg4 = Combat.combatType4();
-
-	Boolean Msg5 = Combat.combatType5();
-
-	Boolean Msg6 = Combat.combatType6();
-
-	private static int nbDesDeffenseur1 = Des.nbAleatoire();
-	private static int nbDesDeffenseur2 = Des.nbAleatoire();;
-
-	private static int nbDesAttaquant1 = Des.nbAleatoire();;
-	private static int nbDesAttaquant2 = Des.nbAleatoire();;
-	private static int nbDesAttaquant3 = Des.nbAleatoire();;
-
+	private static int nbDesDeffenseur1;
+	private static int nbDesDeffenseur2;
+	private static int nbDesAttaquant1;
+	private static int nbDesAttaquant2;
+	private static int nbDesAttaquant3;
 	private static Boolean desDef1 = null;
 	private static Boolean desDef2 = null;
-
 	private static Boolean desAtt1 = null;
 	private static Boolean desAtt2 = null;
 	private static Boolean desAtt3 = null;
 
-	static Boolean winDef1 = null;
+	static int winDef1 = 0;
 	static Boolean winDef2 = null;
 	static Boolean winDef3 = null;
 	static Boolean winDef4 = null;
 	static Boolean winDef5 = null;
 	static Boolean winDef6 = null;
 
-	public static Boolean combatType1() {
+	static int resultatCombat1 = 0;
+	static int resultatCombat2 = 0;
+	static int resultatCombat3 = 0;
+	static int resultatCombat4 = 0;
+	static int resultatCombat5 = 0;
+	static int resultatCombat6 = 0;
+	static Boolean combatActionDeff = null;
+	static Boolean combatActionAttaque = null;
+	static int result = 0;
+
+	public static int globalFight(int desAttaquant, int desDeffenseur) {
+
+		nbDesDeffenseur1 = Des.nbAleatoire();
+		nbDesDeffenseur2 = Des.nbAleatoire();
+		nbDesAttaquant1 = Des.nbAleatoire();
+		nbDesAttaquant2 = Des.nbAleatoire();
+		nbDesAttaquant3 = Des.nbAleatoire();
+
+		if (desAttaquant == 1) {
+			desAtt1 = true;
+			desAtt2 = false;
+			desAtt3 = false;
+		}
+
+		else if (desAttaquant == 2) {
+
+			desAtt1 = true;
+			desAtt2 = true;
+			desAtt3 = false;
+		}
+
+		else if (desAttaquant == 3) {
+
+			desAtt1 = true;
+			desAtt2 = true;
+			desAtt3 = true;
+		}
+
+		if (desDeffenseur == 1) {
+
+			desDef1 = true;
+			desDef2 = false;
+		}
+
+		else if (desDeffenseur == 2) {
+
+			desDef1 = true;
+			desDef2 = true;
+		}
+
+		resultatCombat1 = Combat.combatType1();
+		resultatCombat2 = Combat.combatType2();
+		resultatCombat3 = Combat.combatType3();
+		resultatCombat4 = Combat.combatType4();
+		resultatCombat5 = Combat.combatType5();
+		resultatCombat6 = Combat.combatType6();
+
+		return result;
+
+	}
+
+	public static int combatType1() {
 
 		if ((desDef1 == true) && (desDef2 == false)) {
 
@@ -43,20 +91,20 @@ public class Combat {
 
 				if ((nbDesDeffenseur1 > nbDesAttaquant1) || (nbDesDeffenseur1 == nbDesAttaquant1)) {
 
-					winDef1 = true;
+					result = -1;
 				}
 
 				else {
-					winDef1 = false;
+					result = 1;
 				}
 
 			}
 
 		}
-		return winDef1;
+		return result;
 	}
 
-	public static Boolean combatType2() {
+	public static int combatType2() {
 
 		if ((desDef1 == true) && (desDef2 == true)) {
 
@@ -65,23 +113,23 @@ public class Combat {
 				if ((nbDesDeffenseur1 > nbDesAttaquant1) || (nbDesDeffenseur1 == nbDesAttaquant1)
 						|| (nbDesDeffenseur2 > nbDesAttaquant1) || (nbDesDeffenseur2 == nbDesAttaquant1)) {
 
-					winDef2 = true;
+					result = -1;
 
 				}
 
 				else {
 
-					winDef2 = false;
+					result = 2;
 
 				}
 
 			}
 
 		}
-		return winDef2;
+		return result;
 	}
 
-	public static Boolean combatType3() {
+	public static int combatType3() {
 
 		if ((desDef1 == true) && (desDef2 == false)) {
 
@@ -94,23 +142,23 @@ public class Combat {
 
 				{
 
-					winDef3 = true;
+					result = -2;
 
 				}
 
 				else {
 
-					winDef3 = false;
+					result = 1;
 
 				}
 
 			}
 
 		}
-		return winDef3;
+		return result;
 	}
 
-	public static Boolean combatType4() {
+	public static int combatType4() {
 
 		if ((desDef1 == true) && (desDef2 == false)) {
 
@@ -138,23 +186,23 @@ public class Combat {
 
 				{
 
-					winDef4 = true;
+					result = -3;
 
 				}
 
 				else {
 
-					winDef4 = false;
+					result = 1;
 
 				}
 
 			}
 
 		}
-		return winDef4;
+		return result;
 	}
 
-	public static Boolean combatType5() {
+	public static int combatType5() {
 
 		if ((desDef1 == true) && (desDef2 == true)) {
 
@@ -174,23 +222,23 @@ public class Combat {
 
 				{
 
-					winDef5 = true;
+					result = -2;
 
 				}
 
 				else {
 
-					winDef5 = false;
+					result = 2;
 
 				}
 
 			}
 
 		}
-		return winDef5;
+		return result;
 	}
 
-	public static Boolean combatType6() {
+	public static int combatType6() {
 
 		if ((desDef1 == true) && (desDef2 == true)) {
 
@@ -237,19 +285,20 @@ public class Combat {
 
 				{
 
-					winDef6 = true;
+					result = -3;
 
 				}
 
 				else {
 
-					winDef6 = false;
+					result = 2;
 
 				}
 
 			}
 
 		}
-		return winDef6;
+		return result;
 	}
+
 }
