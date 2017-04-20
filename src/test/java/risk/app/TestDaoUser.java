@@ -7,6 +7,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import dao.UserDAO;
+import risk.app.model.Game;
 import risk.app.model.User;
 import risk.app.model.UserList;
 
@@ -83,7 +84,7 @@ public class TestDaoUser{
 		dao.deleteUser(userTest);
 	}
 	@Test
-	public void testUserExists(){
+	public void testUserExist(){
 		User userTest=new User();
 		String nom="NomUtilisateur";
 		userTest.setUsername(nom);
@@ -102,9 +103,22 @@ public class TestDaoUser{
 		assertEquals(true,dao.userConnection(nom,mdp));
 		dao.deleteUser(userTest);
 	}
+	
 	@Test
-	public void testUserGameList(){
-		//TODO
+	public void testUpdateUserGames() {
+		User userTest = new User();
+		Game gameTest = new Game();
+		userTest.setGamesPlayed(2);
+		userTest.setGamesWon(1);
+		dao.createUser(userTest);
+		gameTest.setGameWinnerId(userTest.getId());
+		dao.updateUserGames(userTest, gameTest);
+		assertEquals(3, userTest.getGamesPlayed());
+		assertEquals(2, userTest.getGamesWon());
 	}
+//	@Test
+//	public void testUserGameList(){
+//		//TODO
+//	}
 
 }

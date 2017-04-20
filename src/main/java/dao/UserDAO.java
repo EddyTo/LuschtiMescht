@@ -1,5 +1,6 @@
 package dao;
 
+import risk.app.model.Game;
 import risk.app.model.User;
 import risk.app.model.UserList;
 
@@ -85,9 +86,17 @@ public class UserDAO implements AbstractUserDAO {
 	}
 
 	@Override
-	public void updateUserGameList(User user, Long newGameId) {
+	public void updateUserGames(User user, Game game) {
 		UserDAO.getInstance();
-		user.getGameIdList().add(newGameId);
+		int gamesPlayed = user.getGamesPlayed();
+		int gamesWon = user.getGamesWon();
+		Long winnerId = game.getGameWinnerId();
+		if(winnerId == user.getId()) {
+			user.setGamesPlayed(gamesPlayed++);
+			user.setGamesWon(gamesWon++);
+		} else {
+			user.setGamesPlayed(gamesPlayed++);
+		}
 		em.getTransaction().begin();
 		em.merge(user);
 		em.getTransaction().commit();
