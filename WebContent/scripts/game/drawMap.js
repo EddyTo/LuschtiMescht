@@ -8,16 +8,21 @@ var haveToDefend = false;
 var defend = []; //0:player , 1:idcellattaquante , 2: idcelldefense , 3: nbsoldierattaquant
 var nbDefence = -1;
 
-//courtcircuit du service
-var player1, player2;
+
+var player1, player2, player3;
 var battlefield;
-var id_index = 0;
+
+//courtcircuit du service
+/*var player1, player2;
+var battlefield;
+var id_index = 0;*/
 
 //timer
 var datePrec = new Date();
 var timerPrec = datePrec.getTime();
 var dateNow;
 var timerNow = 0;
+
 
 function setup() {
 
@@ -35,7 +40,15 @@ function setup() {
 
     COLOR_PONT = color(51);
     COLOR_OCEAN = color(0, 0, 255);
+    
 
+    player1 = new Player(color(255, 0, 0));
+    player2 = new Player(color(255, 255, 0));
+    player2 = new Player(color(255, 0, 255));
+    
+    
+
+    /*
     //courtcircuit du service
     player1 = new Player(color(255, 0, 0));
     player2 = new Player(color(0, 255, 0));
@@ -50,6 +63,35 @@ function setup() {
             createCellAround(battlefield.cells[i]);
         }
     }
+    */
+    
+    //parseJSON
+    var parsed = JSON.parse(JSON_carte);
+    for(var i = 0; i < parsed.length; i++){
+    	if(parsed[i].couleur == "Rouge"){
+        	battlefield.cells[i] = new Cell(player1, TYPE_TERRAIN);
+    	} else if(parsed[i].couleur == "Jaune"){
+        	battlefield.cells[i] = new Cell(player2, TYPE_TERRAIN);
+    	}else if(parsed[i].couleur == "Rose"){
+    		battlefield.cells[i] = new Cell(player3, TYPE_TERRAIN);
+    	} else if(parsed[i].type == 0){
+    		battlefield.cells[i] = new Cell(null, TYPE_OCEAN);
+    	} else if(parsed[i].type == 1){
+    		battlefield.cells[i] = new Cell(null, TYPE_PONT);
+    	} else if(parsed[i].type == 2){
+    		battlefield.cells[i] = new Cell(null, TYPE_PONT);
+    	}
+    	
+    	battlefield.cells[i].id = parse[i].id;
+    	
+    	for(var j = 0; j < parsed[i].voisins.length; j++){
+    		if(battlefield.findCell(parsed[i].voisins[j]) != null){
+    			battlefield.cells[i].addConnection(battlefield.findCell(parsed[i].voisins[j]));
+    		}
+    	}
+    	
+    }
+    
     battlefield.calcCenter();
     battlefield.draw();
 

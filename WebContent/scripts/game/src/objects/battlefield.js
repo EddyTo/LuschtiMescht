@@ -39,5 +39,6 @@ Battlefield.prototype.findCell = function(id) {
             return this.cells[i];
         }
     }
+    return null;
 }
 
