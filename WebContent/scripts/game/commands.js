@@ -1,16 +1,19 @@
-var waitingGame = true;
 
+
+var waitingGame = true;
 function joinGame() {
     $.ajax({
-        url: "http://localhost:8080/risk.app/jaxrs/service/init/addplayer",
+        url: "http://localhost:8080/risk.app/jaxrs/init/addPlayer",
         type: "GET",
         dataType: 'text',
         success: function(data) {
             if (data == "Over") {
-                alert("Partie complète");
+                alert("Game is full");
                 waitingGame = false;
             } else {
+                alert("you are: " + data);
                 waitingGame = true;
+                attente();
             }
         }
     })
