@@ -92,9 +92,9 @@ function block() {
 }
 
 function afficher() {
-	document.getElementById('play').InnerHTML = "<button onclick='joinGame();' class='btn btn-success' >PLAY</button>";
+	document.getElementById('play').innerHTML = "<button onclick='joinGame();' class='btn btn-success' >PLAY</button>";
 }
 
 function attente(){
-	document.getElementById('play').InnerHTML ="<div class='progress-bar' role='progressbar' aria-valuenow='33' aria-valuemin='0' aria-valuemax='100' style='width: 33%;'>";
+	document.getElementById('play').innerHTML ="<div class='progress-bar' role='progressbar' aria-valuenow='33' aria-valuemin='0' aria-valuemax='100' style='width: 33%;'>";
 }

@@ -9,8 +9,9 @@
 
 	<head>
 		<title>Lobby</title>
-		<script type="text/javascript" src="scripts/divers.js"></script>
+	
 		<c:import url="../subviews/importBootstrap.jsp" />
+		<script type="text/javascript" src="scripts/game/commands.js"></script>
 	</head>
 	
 	<body>
@@ -19,13 +20,6 @@
 		<div class="container text-center">
 			<h2 class="page-header">Welcome into the Lobby of LuschtiMescht</h2>
 			
-			<script type="text/javascript">
-			if (!(waitingGame)){
-				afficher();
-			} else {
-				attente();
-			}
-			</script>
 			
 				<div class="jumbotron">
 					<div id="play" class="text-center">
@@ -35,5 +29,13 @@
 		</div>
 		
 		<c:import url="../subviews/footer.jsp" />
+		<script type="text/javascript" src="scripts/divers.js"></script>
+			<script type="text/javascript">
+			if (waitingGame){
+				afficher();
+			} else {
+				attente();
+			}
+			</script>
 	</body>
 </html>
