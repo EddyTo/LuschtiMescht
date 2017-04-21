@@ -35,7 +35,7 @@ Battlefield.prototype.calcCenter = function() {
 
 Battlefield.prototype.findCell = function(id) {
     for (var i = 0; i < this.cells.length; i++) {
-        if (this.cells[i].id = id) {
+        if (this.cells[i].id == id) {
             return this.cells[i];
         }
     }

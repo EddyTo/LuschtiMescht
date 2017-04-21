@@ -58,7 +58,7 @@
 				<input class="col-md-4" id="troops" type="number" name="troops" required>
 				<input class="hidden" id="startCell" type="text" name="startCell" value="${startCell}"/>
 				<input class="hidden" id="destination" type="text" name="destination" value="${destination}"/>
-				<button id="sendForMove" type="submit"class="col-md-4 text-center btn btn-warning button-center">Send Troops</button>
+				<button id="sendForMove" type="submit" class="col-md-4 text-center btn btn-warning button-center">Send Troops</button>
 				</form>
 				
 				<br>
@@ -76,7 +76,7 @@
 				<form action="" method="post">
 				<label class="col-md-6">Amount of units who will defend:</label>
 				<input class="col-md-4" id="troops" type="number" name="troops" max="2" required>
-				<button id="sendForDefend" type="submit"class="col-md-4 text-center btn btn-warning button-center">Send Troops</button>
+				<button id="sendForDefend" type="submit" class="col-md-4 text-center btn btn-warning button-center">Send Troops</button>
 				</form>
 				<br>
 			</div>

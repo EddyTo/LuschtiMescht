@@ -1,3 +1,4 @@
+var init=false;
 var canvas;
 var cellSelected;
 var cellSelected2;
@@ -5,19 +6,20 @@ var soldiersEnrolled = -1;
 var pos_text = 0;
 var myTurn = false;
 var haveToDefend = false;
-var defend = []; //0:player , 1:idcellattaquante , 2: idcelldefense , 3: nbsoldierattaquant
+var defend = []; // 0:player , 1:idcellattaquante , 2: idcelldefense , 3:
+					// nbsoldierattaquant
 var nbDefence = -1;
 
 
 var player1, player2, player3;
 var battlefield;
 
-//courtcircuit du service
-/*var player1, player2;
-var battlefield;
-var id_index = 0;*/
+// courtcircuit du service
+/*
+ * var player1, player2; var battlefield; var id_index = 0;
+ */
 
-//timer
+// timer
 var datePrec = new Date();
 var timerPrec = datePrec.getTime();
 var dateNow;
@@ -25,94 +27,85 @@ var timerNow = 0;
 
 
 function setup() {
-
-    dateNow = new Date();
-    timerNow = dateNow.getTime();
-
-    if(timerNow - timerPrec > 1000){
-      var datePrec = new Date();
-      var timerPrec = datePrec.getTime();
-      askTour();
-    }
-
-    canvas = createCanvas(CNV_WIDTH, CNV_HEIGHT);
-    canvas.parent("canvas");
-
-    COLOR_PONT = color(51);
-    COLOR_OCEAN = color(0, 0, 255);
-    
-
-    player1 = new Player(color(255, 0, 0));
-    player2 = new Player(color(255, 255, 0));
-    player2 = new Player(color(255, 0, 255));
-    
-    
-
-    /*
-    //courtcircuit du service
-    player1 = new Player(color(255, 0, 0));
-    player2 = new Player(color(0, 255, 0));
-    battlefield = new Battlefield();
-
-    var origin = new Cell(null, TYPE_OCEAN);
-    battlefield.cells.push(origin);
-
-    for (var j = 0; j < 4; j++) {
-        var taille = battlefield.cells.length;
-        for (var i = 0; i < taille; i++) {
-            createCellAround(battlefield.cells[i]);
-        }
-    }
-    */
-    
-    //parseJSON
-    battlefield = new Battlefield();
-    var parsed = JSON.parse(JSON_carte);
-    console.log(parsed);
-    for(var i = 0; i < parsed.length; i++){
-    	if(parsed[i].couleur == "Rouge"){
-        	battlefield.cells[i] = new Cell(player1, TYPE_TERRAIN);
-    	} else if(parsed[i].couleur == "Jaune"){
-        	battlefield.cells[i] = new Cell(player2, TYPE_TERRAIN);
-    	}else if(parsed[i].couleur == "Rose"){
-    		battlefield.cells[i] = new Cell(player3, TYPE_TERRAIN);
-    	} else if(parsed[i].type == 0){
-    		console.log("----");
-    		console.log(i);
-    		console.log(parsed.length);
-    		console.log(battlefield.cells[i]);
-    		battlefield.cells[i] = new Cell(null, TYPE_OCEAN);
-    	} else if(parsed[i].type == 1){
-    		battlefield.cells[i] = new Cell(null, TYPE_PONT);
-    	} else if(parsed[i].type == 2){
-    		battlefield.cells[i] = new Cell(null, TYPE_PONT);
-    	}
-    	
-    	battlefield.cells[i].id = parsed[i].id;
-    	
-    	for(var j = 0; j < parsed[i].voisins.length; j++){
-    		if(battlefield.findCell(parsed[i].voisins[j]) != null){
-    			battlefield.cells[i].addConnection(battlefield.findCell(parsed[i].voisins[j]));
-    		}
-    	}
-    	
-    }
-    
-    battlefield.calcCenter();
-    battlefield.draw();
-
-    console.log(battlefield);
-
-    //positionner le champ du "soldier enrollement"
-    var posMaxY = 0;
-    var maxY = battlefield.cells[posMaxY].y;
-    for (var i = 0; i < battlefield.cells.length; i++) {
-        if (battlefield.cells[i].y > maxY) {
-            maxY = battlefield.cells[i].y;
-            posMaxY = i;
-        }
-    }
-    pos_text = maxY + 3 * CELL_RADIUS;
+	loadGame();
+	if(!init){
+	    dateNow = new Date();
+	    timerNow = dateNow.getTime();
+	
+	    if(timerNow - timerPrec > 1000){
+	      var datePrec = new Date();
+	      var timerPrec = datePrec.getTime();
+	      askTour();
+	    }
+	
+	    canvas = createCanvas(CNV_WIDTH, CNV_HEIGHT);
+	    canvas.parent("canvas");
+	
+	    COLOR_PONT = color(51);
+	    COLOR_OCEAN = color(0, 0, 255);
+	    
+	
+	    player1 = new Player(color(255, 0, 0));
+	    player2 = new Player(color(255, 255, 0));
+	    player3 = new Player(color(255, 0, 255));
+	    
+	    
+	
+	    /*
+		 * //courtcircuit du service player1 = new Player(color(255, 0, 0));
+		 * player2 = new Player(color(0, 255, 0)); battlefield = new
+		 * Battlefield();
+		 * 
+		 * var origin = new Cell(null, TYPE_OCEAN);
+		 * battlefield.cells.push(origin);
+		 * 
+		 * for (var j = 0; j < 4; j++) { var taille = battlefield.cells.length;
+		 * for (var i = 0; i < taille; i++) {
+		 * createCellAround(battlefield.cells[i]); } }
+		 */
+	    
+	    // parseJSON
+	    battlefield = new Battlefield();
+	    var parsed = JSON.parse(JSON_carte);
+	    
+	    for(var i = 0; i < parsed.length; i++){
+	    	if(parsed[i].couleur == "Rouge"){
+	        	battlefield.cells[i] = new Cell(player1, TYPE_TERRAIN);
+	    	} else if(parsed[i].couleur == "Jaune"){
+	        	battlefield.cells[i] = new Cell(player2, TYPE_TERRAIN);
+	    	}else if(parsed[i].couleur == "Rose"){
+	    		battlefield.cells[i] = new Cell(player3, TYPE_TERRAIN);
+	    	} else if(parsed[i].type == 0){
+	    		battlefield.cells[i] = new Cell(null, TYPE_OCEAN);
+	    	} else if(parsed[i].type == 1){
+	    		battlefield.cells[i] = new Cell(null, TYPE_PONT);
+	    	}
+	    	
+	    	battlefield.cells[i].id = parsed[i].id;
+	    	battlefield.cells[i].soldiers = parsed[i].unite;
+	    	for(var j = 0; j < parsed[i].voisins.length; j++){
+	    		if(battlefield.findCell(parsed[i].voisins[j]) != null){
+	    			battlefield.cells[i].addConnection(j, battlefield.findCell(parsed[i].voisins[j]));
+	    		}
+	    	}
+	    }
+	    
+	    battlefield.calcCenter();
+	    battlefield.draw();
+	
+	    console.log(battlefield);
+	
+	    // positionner le champ du "soldier enrollement"
+	    var posMaxY = 0;
+	    var maxY = battlefield.cells[posMaxY].y;
+	    for (var i = 0; i < battlefield.cells.length; i++) {
+	        if (battlefield.cells[i].y > maxY) {
+	            maxY = battlefield.cells[i].y;
+	            posMaxY = i;
+	        }
+	    }
+	    pos_text = maxY + 3 * CELL_RADIUS;
+	}
 }
 
 function draw() {
@@ -123,11 +116,11 @@ function draw() {
     }
     battlefield.draw();
 
-    //reset color
+    // reset color
     for (var i = 0; i < battlefield.cells.length; i++) {
         battlefield.cells[i].setDefaultColor();
     }
-    //mouseover
+    // mouseover
     for (var i = 0; i < battlefield.cells.length; i++) {
         if (battlefield.cells[i].over(mouseX, mouseY)) {
             var curColor = battlefield.cells[i].color;
@@ -135,7 +128,7 @@ function draw() {
             i = battlefield.cells.length;
         }
     }
-    //cellSelected
+    // cellSelected
     if (cellSelected2 != null) {
         var cur = cellSelected2.color;
         cellSelected2.color = color(155 + red(cur) / 3, 155 + green(cur) / 3, 155 + blue(cur) / 3);
@@ -162,7 +155,7 @@ function draw() {
         }
         soldiersEnrolled = -1;
     }
-    //soldiers choice :
+    // soldiers choice :
     if (soldiersEnrolled != -1) {
         fill(255);
         noStroke();
@@ -175,7 +168,7 @@ function draw() {
         fill(210);
         text("Selected: " + soldiersEnrolled + " (max: " + cellSelected.soldiers + ")", CELL_RADIUS, pos_text + 20);
     }
-    //have to defend
+    // have to defend
     if (haveToDefend) {
 
         var cell_attck = battlefield.findCell(defend[1]);
@@ -205,16 +198,16 @@ function keyPressed() {
 
 function mouseClicked() {
 
-    if (myTurn) {
+    if(true){// if (myTurn) {
         var another = true;
 
         if (cellSelected != null) {
             for (var i = 0; i < NB_VOISINS; i++) {
                 if (cellSelected.voisins[i] != null) {
-                    if (cellSelected.voisins[i].over(mouseX, mouseY)) {
-                        cellSelected2 = cellSelected.voisins[i];
-                        another = false;
-                    }
+	                    if (cellSelected.voisins[i].over(mouseX, mouseY)) {
+	                        cellSelected2 = cellSelected.voisins[i];
+	                        another = false;
+	                    }
                 }
             }
         }
