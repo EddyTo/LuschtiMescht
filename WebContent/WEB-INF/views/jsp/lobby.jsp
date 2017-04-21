@@ -19,14 +19,19 @@
 		<div class="container text-center">
 			<h2 class="page-header">Welcome into the Lobby of LuschtiMescht</h2>
 			
+			<script type="text/javascript">
+			if (!(waitingGame)){
+				afficher();
+			} else {
+				attente();
+			}
+			</script>
 			
-			<form action="Lobby" method="post">
 				<div class="jumbotron">
-					<div class="text-center">
-						<input type="submit" class="btn btn-success" value="PLAY"/>
+					<div id="play" class="text-center">
 					</div>
 				</div>
-			</form>
+			
 		</div>
 		
 		<c:import url="../subviews/footer.jsp" />
