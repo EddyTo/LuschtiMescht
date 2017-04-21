@@ -1,5 +1,7 @@
 package risk.ws.rest;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -9,6 +11,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import risk.app.model.MyBean;
+import risk.app.model.User;
 
 @Path("/service")
 public class RestServices {
@@ -29,23 +32,34 @@ public class RestServices {
 		public String scopesTests() {
 			
 			httpRequest.getServletContext().setAttribute("sessAtt", httpRequest.getServletContext().getServletContextName());
-			httpRequest.getServletContext().setAttribute("sess2", httpRequest.getSession().getServletContext().getServletContextName());
+			//httpRequest.getServletContext().setAttribute("sess2", httpRequest.getSession().getServletContext().getServletContextName());
 			
 		return "service accompli";
 
 		}
 	 
 		@GET
-		@Path("nom-{nom}/age-{age}")
+		@Path("nom-{nom}/id-{id}")
 		@Produces(MediaType.APPLICATION_JSON)
-		public MyBean getMyBeanBis(@PathParam("nom") String myName, @PathParam("age") int myAge) {
+		public User getMyBeanBis(@PathParam("nom") String myName, @PathParam("id") Long myId) {
 			System.out.println("accessed JSON");
-			MyBean karim = new MyBean();
-			karim.setName(myName);
-			karim.setAge(myAge);
-			System.out.println(karim.name);
-			System.out.println(karim.age);
-			return karim;
+			User user = new User();
+			user.setUsername(myName);
+			user.setId(myId);
+			user.setEmail("a.a@a.a");
+			user.setPassword("0000");
+			user.setScore(0);
+			
+			ArrayList<Long> gameIdList = new ArrayList<Long>();
+			gameIdList.add(Long.valueOf(3));
+			gameIdList.add(Long.valueOf(5));
+			gameIdList.add(Long.valueOf(8));
+			
+			user.setGameIdList(gameIdList);
+
+			System.out.println(user.getUsername());
+			System.out.println(user.getId());
+			return user;
 			
 			
 		}

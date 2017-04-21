@@ -14,7 +14,7 @@
 
 <script type="text/javascript">
 
-$.getJSON('http://localhost:8080/TestJAX-RS/jaxrs/helloworld/nom-KARIM/age-30', function(data,status,xhr) {
+$.getJSON('http://localhost:8080/TestJAX-RS/jaxrs/helloworld/nom-KARIM/id-30', function(data,status,xhr) {
     //data is the JSON string
 	console.log(status);
 	myJson = data;
@@ -22,28 +22,40 @@ $.getJSON('http://localhost:8080/TestJAX-RS/jaxrs/helloworld/nom-KARIM/age-30', 
 });
 
 function getJsonService(name,age){
-	$.getJSON('http://localhost:8080/risk.app/jaxrs/service/nom-'+document.getElementById(name).value+'/age-'+document.getElementById(age).value, function(data,status,xhr) {
+	$.getJSON('http://localhost:8080/risk.app/jaxrs/service/nom-'+document.getElementById(name).value+'/id-'+document.getElementById(age).value, function(data,status,xhr) {
 	    //data is the JSON string
 		console.log(status);
 		myJson = data;
-	    document.getElementById("para").innerHTML = data.name + ", " + data.age + " ans";
+	    document.getElementById("para").innerHTML = data.username + ", " + data.id + " ans" + ", " + data.gameIdList[1];
 	});	
 }
 
 function RestScopeTest(){
-
-    
-
     $.ajax({
 
        url : 'http://localhost:8080/risk.app/jaxrs/service/scopesTests', // La ressource ciblée
        type : 'GET', // Le type de la requête HTTP
-       dataType : 'html' // Le type de données à recevoir, ici, du HTML.
-
+       dataType : 'html', // Le type de données à recevoir, ici, du HTML.
+       success : function(code_html, statut){ // code_html contient le HTML renvoyé
+    	   document.getElementById("refrechable").innerHTML = "Application attribute : (Set) ${sessAtt}";
+    	   //document.getElementById("msg").append(status + ", " + code_html);
+    	   document.getElementById("msg").innerHTML = "status : " + status + ", html response : " + code_html;
+       }
     });
+}
 
-   
+function PostJsonService(){
+    $.ajax({
 
+       url : 'http://localhost:8080/risk.app/jaxrs/service/scopesTests', // La ressource ciblée
+       type : 'POST', // Le type de la requête HTTP
+       dataType : 'html', // Le type de données à recevoir, ici, du HTML.
+       success : function(code_html, statut){ // code_html contient le HTML renvoyé
+    	   document.getElementById("refrechable").innerHTML = "Application attribute : (Set) ${sessAtt}";
+    	   //document.getElementById("msg").append(status + ", " + code_html);
+    	   document.getElementById("msg").innerHTML = "status : " + status + ", html response : " + code_html;
+       }
+    });
 }
 </script>
 
@@ -59,11 +71,11 @@ Web Service Tests
 <button id="test" onclick="RestScopeTest()">TEST</button>
 
 
-<p>${sessAtt}</p>
-<p>${sess2}</p>
-<p>
-<%= session.getId() %>
-</p>
+<p id="refrechable">Application attribute : ${sessAtt}</p>
+<p><%= session.getId() %></p>
+<p id="msg"></p>
+
+
 
 
 </body>
