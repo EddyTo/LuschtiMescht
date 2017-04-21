@@ -293,8 +293,8 @@ public class Jeu {
 		}
 	}
 
-	public void placerArmees(Player player, int territoireIDint, int nbArmeesPositionnees) {
-		String territoireID = conversionIDcase(territoireIDint);
+	public void placerArmees(Player player, int j, int nbArmeesPositionnees) {
+		String territoireID = conversionIDcase(j);
 		for (int i = 0; i < plateau.getCasePlateau().size(); i++) {
 			Position territoire = plateau.getCasePlateau().get(i);
 			String plateauID = territoire.getId();

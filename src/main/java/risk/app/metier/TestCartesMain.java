@@ -82,7 +82,7 @@ public class TestCartesMain {
 				+ " territoires, " + P3.countLaser() + " Lasers x1, " + P3.countCanonDeGauss() + " Plasmas x2, "
 				+ P3.countPlasma() + " Canons de Gauss x3");
 
-		jeu.placerArmees(P1, "-5;-2", 2);
+		jeu.placerArmees(P1, 14, 2);
 
 		System.out.println("Joueur1 Rouge : " + P1.countArmee() + " armées dont " + P1.countTerritoires()
 				+ " territoires, " + P1.countLaser() + " Lasers x1, " + P1.countCanonDeGauss() + " Plasmas x2, "
