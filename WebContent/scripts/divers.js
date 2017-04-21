@@ -96,5 +96,5 @@ function afficher() {
 }
 
 function attente(){
-	document.getElementById('play').innerHTML ="<a href='WEB-INF/views/jsp/gameInAction.jsp' class='btn btn-success'>Load game</a>";
+	document.getElementById('play').innerHTML ="<a href='gameInAction.jsp' class='btn btn-success'>Load game</a>";
 }

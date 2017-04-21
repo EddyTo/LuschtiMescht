@@ -66,7 +66,9 @@ function setup() {
     */
     
     //parseJSON
+    battlefield = new Battlefield();
     var parsed = JSON.parse(JSON_carte);
+    console.log(parsed);
     for(var i = 0; i < parsed.length; i++){
     	if(parsed[i].couleur == "Rouge"){
         	battlefield.cells[i] = new Cell(player1, TYPE_TERRAIN);
@@ -75,6 +77,10 @@ function setup() {
     	}else if(parsed[i].couleur == "Rose"){
     		battlefield.cells[i] = new Cell(player3, TYPE_TERRAIN);
     	} else if(parsed[i].type == 0){
+    		console.log("----");
+    		console.log(i);
+    		console.log(parsed.length);
+    		console.log(battlefield.cells[i]);
     		battlefield.cells[i] = new Cell(null, TYPE_OCEAN);
     	} else if(parsed[i].type == 1){
     		battlefield.cells[i] = new Cell(null, TYPE_PONT);
@@ -82,7 +88,7 @@ function setup() {
     		battlefield.cells[i] = new Cell(null, TYPE_PONT);
     	}
     	
-    	battlefield.cells[i].id = parse[i].id;
+    	battlefield.cells[i].id = parsed[i].id;
     	
     	for(var j = 0; j < parsed[i].voisins.length; j++){
     		if(battlefield.findCell(parsed[i].voisins[j]) != null){
