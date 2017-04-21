@@ -81,7 +81,8 @@ public class MoteurDuJeu {
 
 	
 	// Placer les armées avant le premier tour
-	public boolean placementDesArmees(Player player, String territoireID, int nbArmeesPositionnees) {
+	public boolean placementDesArmees(String playerID, int territoireID, int nbArmeesPositionnees) {
+		Player player = jeu.identifierPlayer(playerID);
 		int nbArmeeInit = player.getArmee().getNbArmees();
 		if (nbArmeeInit >= nbArmeesPositionnees) {
 			jeu.placerArmees(player, territoireID, nbArmeesPositionnees);
@@ -91,19 +92,19 @@ public class MoteurDuJeu {
 
 	
 	// Jouer un Tour
-	public boolean deplacement(String territoireIDdepart, String territoireIDarrivee, int nbArmees) {
+	public boolean deplacement(int territoireIDdepart, int territoireIDarrivee, int nbArmees) {
 		jeu.deplacerArmees(territoireIDdepart, territoireIDarrivee, nbArmees);
 		return true;
 	}
 
-	public boolean combatEntreJoueurs(int desAttaquant, int desDeffenseur, String territoireIDattaquant, String territoireIDdefenseur) {
+	public boolean combatEntreJoueurs(int desAttaquant, int desDeffenseur, int territoireIDattaquant, int territoireIDdefenseur) {
 		jeu.fight(desAttaquant, desDeffenseur, territoireIDattaquant, territoireIDdefenseur);
 		return true;
 	}
 	
 	
 	// Défaite d'un joueur
-	public boolean joueurVaincu(Player player){
-		return jeu.defaite(player);
+	public boolean joueurVaincu(String playerID){
+		return jeu.defaite(playerID);
 	}
 }
