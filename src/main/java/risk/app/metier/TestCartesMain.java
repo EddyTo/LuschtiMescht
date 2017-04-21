@@ -87,6 +87,22 @@ public class TestCartesMain {
 		System.out.println("Joueur1 Rouge : " + P1.countArmee() + " armées dont " + P1.countTerritoires()
 				+ " territoires, " + P1.countLaser() + " Lasers x1, " + P1.countCanonDeGauss() + " Plasmas x2, "
 				+ P1.countPlasma() + " Canons de Gauss x3");
+
+		for (int i = 0; i < jeu.getPlateau().getCasePlateau().size(); i++) {
+			if (jeu.getPlateau().getCasePlateau().get(i).getId() == "-1;0") {
+				System.out.println(jeu.getPlateau().getCasePlateau().get(i).getContenu());
+			}
+		}
+
+		String test = "kughr";
+		for (int i = 0; i < jeu.getPlateau().getCasePlateau().size(); i++) {
+			if (jeu.getPlateau().getCasePlateau().get(i).getId().equals( "-9;0")) {
+				test = jeu.getPlateau().getCasePlateau().get(i).getOuest();
+			}
+		}
+
+		System.out.println(test);
+
 	}
 
 }

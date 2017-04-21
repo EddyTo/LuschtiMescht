@@ -27,7 +27,26 @@ public class Plateau {
 		for (int i = 0; i < getCasePlateau().size(); i++) {
 			getCasePlateau().get(i).setIdentifiant(i);
 		}
+//		for (Position position : casePlateau){
+//			for(Position position2 : casePlateau){
+//				if (Math.sqrt(Math.pow(((double)position.getX()-(double)position2.getY()),2)+Math.pow(((double)position.getY()-(double)position2.getY()),2))<=2){
+//					if (position.getX()==position2.getX()+2)
+//						position.setOuest(position2.getId());
+//					if (position.getX()==position2.getX()-2)
+//						position.setEst(position2.getId());
+//					if ((position.getX()==position2.getX()+1)&&(position.getY()==position2.getY()+1))
+//						position.setSudOuest(position2.getId());
+//					if ((position.getX()==position2.getX()-1)&&(position.getY()==position2.getY()-1))
+//						position.setNordEst(position2.getId());
+//					if ((position.getX()==position2.getX()-1)&&(position.getY()==position2.getY()+1))
+//						position.setSudEst(position2.getId());
+//					if ((position.getX()==position2.getX()+1)&&(position.getY()==position2.getY()-1))
+//						position.setNordOuest(position2.getId());
+//				}
+//				}
+//			}
 	}
+	
 	
 	
 	public ArrayList<Position> getCasePlateau() {
