@@ -245,6 +245,40 @@ public class Jeu {
 		}
 		return null;
 	}
+	
+	public String conversionIDcase(int territoireID) {
+		for (int i = 0; i < plateau.getCasePlateau().size(); i++) {
+			int plateauID = plateau.getCasePlateau().get(i).getIdentifiant();
+			if (plateauID==territoireID) {
+				return plateau.getCasePlateau().get(i).getId();
+			}
+		}
+		return null;
+	}
+	
+	public Player identifierPlayer(String playerID) {
+		if (P1.getCouleur().equals(playerID)){
+			return P1;
+		}
+		else if (P2.getCouleur().equals(playerID)){
+			return P2;
+		}
+		else if (P3.getCouleur().equals(playerID)){
+			return P3;
+		}
+		else if (P4.getCouleur().equals(playerID)){
+			return P4;
+		}
+		else if (P5.getCouleur().equals(playerID)){
+			return P5;
+		}
+		else if (P6.getCouleur().equals(playerID)){
+			return P6;
+		}
+		else {
+			return null;
+		}
+	}
 
 	public void occuperDeBase(Player player) {
 		for (int i = 0; i < plateau.getCasePlateau().size(); i++) {
@@ -259,7 +293,8 @@ public class Jeu {
 		}
 	}
 
-	public void placerArmees(Player player, String territoireID, int nbArmeesPositionnees) {
+	public void placerArmees(Player player, int territoireIDint, int nbArmeesPositionnees) {
+		String territoireID = conversionIDcase(territoireIDint);
 		for (int i = 0; i < plateau.getCasePlateau().size(); i++) {
 			Position territoire = plateau.getCasePlateau().get(i);
 			String plateauID = territoire.getId();
@@ -295,7 +330,9 @@ public class Jeu {
 		}
 	}
 
-	public void deplacerArmees(String territoireDepart, String territoireArrivee, int nbArmees) {
+	public void deplacerArmees(int territoireDep, int territoireArri, int nbArmees) {
+		String territoireDepart = conversionIDcase(territoireDep);
+		String territoireArrivee = conversionIDcase(territoireArri);
 		for (int i = 0; i < plateau.getCasePlateau().size(); i++) {
 			Position plateauDepart = plateau.getCasePlateau().get(i);
 			String plateauIDDepart = plateauDepart.getId();
@@ -319,8 +356,8 @@ public class Jeu {
 		}
 	}
 	
-	public boolean defaite(Player player){
-		String couleurJoueur = player.getCouleur();
+	public boolean defaite(String playerID){
+		String couleurJoueur = playerID;
 		int nbCasesPocede = 0;
 		for (int i = 0; i < plateau.getCasePlateau().size(); i++) {
 			String couleurTerritoire = plateau.getCasePlateau().get(i).getCouleur();
@@ -336,10 +373,13 @@ public class Jeu {
 		}
 	}
 	
-	public void fight(int desAttaquant, int desDeffenseur, String territoireIDattaquant, String territoireIDdefenseur){
+	public void fight(int desAttaquant, int desDeffenseur, int territoireIDattaquant, int territoireIDdefenseur){
+		String territoireIDatt = conversionIDcase(territoireIDattaquant);
+		String territoireIDdef = conversionIDcase(territoireIDdefenseur);
 		int nbArmeesGagneesATK = Combat.globalFight(desAttaquant, desDeffenseur);
 		int nbArmeesGagneesDEF = -(nbArmeesGagneesATK);
-		modifArmeesATK(territoireIDattaquant, nbArmeesGagneesATK);
-		modifArmeesDEF(territoireIDattaquant, nbArmeesGagneesDEF);
+		modifArmeesATK(territoireIDatt, nbArmeesGagneesATK);
+		modifArmeesDEF(territoireIDdef, nbArmeesGagneesDEF);
 	}
+	
 }
