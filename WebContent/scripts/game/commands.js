@@ -1,3 +1,17 @@
+var JSON_carte = null;
+
+
+function loadGame(){
+    $.ajax({
+        url: "http://localhost:8080/risk.app/jaxrs/init/loadGame",
+        type: "GET",
+        dataType: 'text',
+        success: function(data) {
+        	JSON_carte = data;
+        	setup();
+        }
+    })
+}
 
 
 var waitingGame = true;

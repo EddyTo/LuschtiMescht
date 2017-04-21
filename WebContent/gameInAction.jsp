@@ -9,18 +9,16 @@
 <head>
 <title>LuschtiMescht</title>
 <script type="text/javascript" src="scripts/divers.js"></script>
-<c:import url="../subviews/importBootstrap.jsp" />
+<c:import url="WEB-INF/views/subviews/importBootstrap.jsp" />
 </head>
 
 <body>
-	<c:import url="../subviews/menu.jsp" />
+	<c:import url="WEB-INF/views/subviews/menu.jsp" />
 
 	<div class="form-group row" style="padding: 18px;">
 
 		<div id="canvas" class="col-md-8" style="border: 2px solid black">
-			//Map//<br> <br> <br> <br> <br> <br> <br>
-			<br> <br> <br> <br> <br> <br> <br>
-			<br> <br> <br> <br> <br> <br>//Map//
+
 		</div>
 
 		<div class="col-md-4 text-center"
@@ -94,6 +92,8 @@
 		</div>
 		
 	</div>
-	<c:import url="../subviews/footer.jsp" />
+	<c:import url="WEB-INF/views/subviews/footer.jsp" />
+	<script type="text/javascript" src="scripts/game/include.js"></script>
+	<button class="btn btn-primary" onclick="loadGame();">Load Game</button>
 </body>
 </html>

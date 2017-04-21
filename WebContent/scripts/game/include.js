@@ -11,6 +11,7 @@ var cell = "<script type='text/javascript' src='scripts/game/src/objects/cell.js
 var player = "<script type='text/javascript' src='scripts/game/src/objects/player.js'></script>";
 var soldier = "<script type='text/javascript' src='scripts/game/src/objects/soldier.js'></script>";
 
+
 document.write(p5);
 document.write(global);
 document.write(utilities);
@@ -20,3 +21,4 @@ document.write(cell);
 document.write(battlefield);
 document.write(commands);
 document.write(drawMap);
+
