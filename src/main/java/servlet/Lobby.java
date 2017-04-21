@@ -52,50 +52,52 @@ public class Lobby extends HttpServlet {
 		gameList = (List<Game>)request.getSession().getAttribute("gameList");
 		// Service.getGame(user);
 		//RequestDispatcher dispatch = request.getRequestDispatcher("WEB-INF/views/jsp/waitingForPlayers.jsp");
-	//	dispatch.forward(request, response); // attente
+		//dispatch.forward(request, response); // attente
+		
+		RequestDispatcher dispatch = request.getRequestDispatcher("WEB-INF/views/jsp/gameInAction.jsp");
+		dispatch.forward(request, response); // game
 		
 		
-		
-		if (gameList == null){
-			List<User> playersList = null;
-			Game game = new Game();
-			playersList.add(user);
-			game.setPlayersList((ArrayList<User>) playersList);
-			gameList.add(game);
-			request.getSession().setAttribute("gameList", gameList);
-			response.sendRedirect("WEB-INF/views/jsp/WaitingForPlayers.jsp"); // attente
-		}
-		
-		
-		for (int i = 0; i < ((List<Game>) gameList).size(); i++){
-			Game game =  gameList.get(i);
-			List<User> playersList = game.getPlayersList();
-			if (playersList.size() < 3 ){
-				playersList.add(user);
-				game.setPlayersList((ArrayList<User>) playersList);
-				gameList.add(game);
-				request.getSession().setAttribute("gameList", gameList);
-				if (playersList.size() == 3){
-					response.sendRedirect(""); // début du jeu
-				} else {
-					response.sendRedirect(""); // attente
-				}
-				
-				
-			} else {
-				playersList = null;
-				game = new Game();
-				playersList.add(user);
-				game.setPlayersList((ArrayList<User>) playersList);
-				gameList.add(game);
-				request.getSession().setAttribute("gameList", gameList);
-				response.sendRedirect(""); // attente
-			}
-			
-		}
-		
-		
-		
+//		if (gameList == null){
+//			List<User> playersList = null;
+//			Game game = new Game();
+//			playersList.add(user);
+//			game.setPlayersList((ArrayList<User>) playersList);
+//			gameList.add(game);
+//			request.getSession().setAttribute("gameList", gameList);
+//			response.sendRedirect("WEB-INF/views/jsp/WaitingForPlayers.jsp"); // attente
+//		}
+//		
+//		
+//		for (int i = 0; i < ((List<Game>) gameList).size(); i++){
+//			Game game =  gameList.get(i);
+//			List<User> playersList = game.getPlayersList();
+//			if (playersList.size() < 3 ){
+//				playersList.add(user);
+//				game.setPlayersList((ArrayList<User>) playersList);
+//				gameList.add(game);
+//				request.getSession().setAttribute("gameList", gameList);
+//				if (playersList.size() == 3){
+//					response.sendRedirect(""); // début du jeu
+//				} else {
+//					response.sendRedirect(""); // attente
+//				}
+//				
+//				
+//			} else {
+//				playersList = null;
+//				game = new Game();
+//				playersList.add(user);
+//				game.setPlayersList((ArrayList<User>) playersList);
+//				gameList.add(game);
+//				request.getSession().setAttribute("gameList", gameList);
+//				response.sendRedirect(""); // attente
+//			}
+//			
+//		}
+//		
+//		
+//		
 		
 	}
 

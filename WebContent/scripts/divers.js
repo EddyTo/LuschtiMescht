@@ -83,3 +83,13 @@ function checkPassword() {
     return true;
 }
 
+
+function block(){
+	var fight = document.getElementById("fight");
+	var send = document.getElementsById('sendForFight');
+	
+	
+		console.log('coucou');
+	    fight.disabled="disabled";
+	
+	}
